@@ -4,9 +4,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Wed</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <h1>Hello Projeto Wed!</h1>    
-    <p>Adicionando alteração</p>
+    <header>
+        <h1>
+            LOGO
+        </h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#produtos">Protudos</a></li>
+                <li><a href="#contatos">Contato</a></li>
+            </ul>
+        </nav>
+        <button id="btnLogin">
+            <img src="assents/user (1).png" alt="" width="30px">
+            <p >Entre ou Cadastre-se Para ver ser pedidos</p>
+        </button>
+    </header>
+
+
+    <section>
+        <div id="loginForm" class="formu" style="display:none;">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <p class="title">Entrar</p>
+            <form class="form">
+                <input type="email" class="input" id="email" placeholder="Email">
+                <input type="password" class="input" id="senha" placeholder="Senha">
+                <p class="page-link">
+                <span id="rec" class="page-link-label">Esqueceu sua senha?</span>
+                 </p>
+                <button class="form-btn">Entrar</button>
+            </form>
+            <p class="sign-up-label">
+              Não tem conta?<span id="sign-up-link"> Cadastre-se</span>
+            </p>
+        </div>
+
+        <div id="cadastroForm" class="formu" style="display:none;">
+            <span class="close-btn" id="closeModal2">&times;</span>
+            <p class="title">Cadastrar</p>
+            <form id="cadastroForm" class="form">
+                <input type="text" class="input" id="nome" placeholder="Nome">
+                <input type="email" class="input" id="email-regis" placeholder="Email">
+                <input type="password" class="input" id="senha-regis" placeholder="Senha">
+
+                <button type="submit" class="form-btn">Cadastrar</button>
+            </form>
+         
+        </div>
+
+        <div id="alterar_senha" class="formu" style="display:none;">
+          <span class="close-btn" id="closeModal3">&times;</span>
+            <p class="title">Redefinir senha</p>
+          <form id="reset-password-form" class="form">
+              <input type="text" id="username" class="input" placeholder="Nome" required>
+      
+              <input type="email" id="email-rec" class="input" placeholder="Email" required>
+      
+              <input type="password" id="new-password" class="input" placeholder="Noca senha" required>
+      
+              <button type="submit"class="form-btn" >Alterar senha</button>
+          </form>
+      
+          <p id="response-message"></p>
+        </div>
+    </section>
+
+
+<script src="js/login.js"></script>
+<script src="js/cadastro.js"></script>
+<script src="js/alterar_senha.js" ></script>
+
 </body>
 </html>  

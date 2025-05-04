@@ -1,0 +1,51 @@
+document.getElementById("reset-password-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const nome = document.getElementById("username").value;
+    const email = document.getElementById("email-rec").value;
+    const novaSenha = document.getElementById("new-password").value;
+
+    try {
+        // Buscar todos os usuários
+        const res = await fetch(API_URL);
+        const usuarios = await res.json();
+
+        // Procurar o usuário pelo nome e email
+        const usuario = usuarios.find(user => user.nome === nome && user.email === email);
+
+        if (!usuario) {
+            alert('Usuário ou e-mail não encontrados.');
+            return;
+        }
+
+        // Atualizar a senha
+        const updateRes = await fetch(`${API_URL}/${usuario.id}`, {
+            method: 'PUT', // ou 'PATCH'
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ ...usuario, senha: novaSenha })
+        });
+
+        if (updateRes.ok) {
+            alert('Senha modificada com sucesso!');
+            window.location.href = 'index.html';
+        } else {
+            alert('Erro ao mudar a senha. Tente novamente.');
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert('Erro de conexão com a API.');
+    }
+});
+
+document.getElementById('rec').addEventListener('click', function() {
+    document.getElementById('alterar_senha').style.display = 'flex';
+});
+
+document.getElementById('rec').addEventListener('click', function() {
+    document.getElementById('loginForm').style.display = 'none';
+});
+
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('alterar_senha').style.display = 'none';
+});
