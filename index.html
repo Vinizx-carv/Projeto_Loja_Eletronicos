@@ -19,7 +19,76 @@
                 <li><a href="#contatos">Contato</a></li>
             </ul>
         </nav>
+        <button id="btnLogin">
+            <img src="assents/user (1).png" alt="" width="30px">
+            <p >Entre ou Cadastre-se Para ver ser pedidos</p>
+        </button>
     </header>
+
+
+    <main>
+        <div id="loginForm" class="formu" style="display:none;">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <p class="title">Entrar</p>
+            <form class="form">
+                <input type="email" class="input" placeholder="Email">
+                <input type="password" class="input" placeholder="Senha">
+                <p class="page-link">
+                <span class="page-link-label">Esqueceu sua senha?</span>
+                 </p>
+                <button class="form-btn">Entrar</button>
+            </form>
+            <p class="sign-up-label">
+              Não tem conta?<span id="sign-up-link"> Cadastre-se</span>
+            </p>
+        </div>
+
+        <div id="cadastroForm" class="formu" style="display:none;">
+            <span class="close-btn" id="closeModal2">&times;</span>
+            <p class="title">Cadastrar</p>
+            <form class="form">
+                <input type="text" class="input" placeholder="Nome">
+                <input type="email" class="input" placeholder="Email">
+                <input type="password" class="input" placeholder="Senha">
+
+                <button class="form-btn">Cadastrar</button>
+            </form>
+         
+        </div>
+    </main>
+
+
+<script>
+
+document.getElementById('btnLogin').addEventListener('click', function() {
+  document.getElementById('loginForm').style.display = 'flex';
+});
+
+document.getElementById('closeModal').addEventListener('click', function() {
+  document.getElementById('loginForm').style.display = 'none';
+});
+
+document.getElementById('sign-up-link').addEventListener('click', function() {
+  document.getElementById('loginForm').style.display = 'none';
+  
+});
+
+document.getElementById('sign-up-link').addEventListener('click', function() {
+  document.getElementById('cadastroForm').style.display = 'flex';
+});
+
+document.getElementById('closeModal2').addEventListener('click', function() {
+  document.getElementById('cadastroForm').style.display = 'none';
+});
+
+
+document.getElementById('closeModal2').addEventListener('click', function() {
+  document.getElementById('cadastroForm').style.display = 'none';
+});
+
+
+
+</script>
     
 </body>
 </html>
