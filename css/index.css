@@ -10,6 +10,10 @@ header{
     align-items: center;
     margin: 10px 30px;
 }
+header h1{
+    color: aqua;
+    font-size: smaller;
+}
 nav ul{
     display: flex;
     gap: 3rem;
@@ -21,4 +25,9 @@ li a{
     list-style: none;
     text-decoration: none;
     
+}
+main{
+    color: brown;
+    background-color: aquamarine;
+    height: 50vh;
 }
