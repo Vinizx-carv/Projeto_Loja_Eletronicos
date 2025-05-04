@@ -26,3 +26,8 @@ li a{
     text-decoration: none;
     
 }
+main{
+    color: brown;
+    background-color: aquamarine;
+    height: 50vh;
+}
