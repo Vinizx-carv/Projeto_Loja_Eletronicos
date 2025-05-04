@@ -31,10 +31,10 @@
             <span class="close-btn" id="closeModal">&times;</span>
             <p class="title">Entrar</p>
             <form class="form">
-                <input type="email" class="input" placeholder="Email">
-                <input type="password" class="input" placeholder="Senha">
+                <input type="email" class="input" id="email" placeholder="Email">
+                <input type="password" class="input" id="senha" placeholder="Senha">
                 <p class="page-link">
-                <span class="page-link-label">Esqueceu sua senha?</span>
+                <span id="rec" class="page-link-label">Esqueceu sua senha?</span>
                  </p>
                 <button class="form-btn">Entrar</button>
             </form>
@@ -46,49 +46,37 @@
         <div id="cadastroForm" class="formu" style="display:none;">
             <span class="close-btn" id="closeModal2">&times;</span>
             <p class="title">Cadastrar</p>
-            <form class="form">
-                <input type="text" class="input" placeholder="Nome">
-                <input type="email" class="input" placeholder="Email">
-                <input type="password" class="input" placeholder="Senha">
+            <form id="cadastroForm" class="form">
+                <input type="text" class="input" id="nome" placeholder="Nome">
+                <input type="email" class="input" id="email-regis" placeholder="Email">
+                <input type="password" class="input" id="senha-regis" placeholder="Senha">
 
-                <button class="form-btn">Cadastrar</button>
+                <button type="submit" class="form-btn">Cadastrar</button>
             </form>
          
+        </div>
+
+        <div id="alterar_senha" class="formu" style="display:none;">
+          <span class="close-btn" id="closeModal3">&times;</span>
+            <p class="title">Redefinir senha</p>
+          <form id="reset-password-form" class="form">
+              <input type="text" id="username" class="input" placeholder="Nome" required>
+      
+              <input type="email" id="email-rec" class="input" placeholder="Email" required>
+      
+              <input type="password" id="new-password" class="input" placeholder="Noca senha" required>
+      
+              <button type="submit"class="form-btn" >Alterar senha</button>
+          </form>
+      
+          <p id="response-message"></p>
         </div>
     </section>
 
 
-<script>
-
-document.getElementById('btnLogin').addEventListener('click', function() {
-  document.getElementById('loginForm').style.display = 'flex';
-});
-
-document.getElementById('closeModal').addEventListener('click', function() {
-  document.getElementById('loginForm').style.display = 'none';
-});
-
-document.getElementById('sign-up-link').addEventListener('click', function() {
-  document.getElementById('loginForm').style.display = 'none';
-  
-});
-
-document.getElementById('sign-up-link').addEventListener('click', function() {
-  document.getElementById('cadastroForm').style.display = 'flex';
-});
-
-document.getElementById('closeModal2').addEventListener('click', function() {
-  document.getElementById('cadastroForm').style.display = 'none';
-});
-
-
-document.getElementById('closeModal2').addEventListener('click', function() {
-  document.getElementById('cadastroForm').style.display = 'none';
-});
-
-
-
-</script>
+<script src="js/login.js"></script>
+<script src="js/cadastro.js"></script>
+<script src="js/alterar_senha.js" ></script>
     
 </body>
 </html>
