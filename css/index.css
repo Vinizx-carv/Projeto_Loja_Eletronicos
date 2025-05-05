@@ -10,17 +10,40 @@ header{
     align-items: center;
     margin: 10px 30px;
 }
+nav{
+  backdrop-filter:blur(10px);
+  padding: 1rem;
+}
 nav ul{
     display: flex;
     gap: 3rem;
     list-style: none; 
-
+    transition: color 0.3s ease;
 }
+
+a::after{
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #3a19f1;
+  bottom: 0;
+  left: 50%;
+  transition: all 0.3s ease;
+}
+a:hover::after{
+  width: 100%;
+  left:0;
+}
+
 li a{ 
     color: black;
     list-style: none;
     text-decoration: none;
-    
+    position: relative;
+    padding: 5px 0;
+    transition: color -.3s ease;
+    font-size: 1.2rem;
 }
 #btnLogin{
     display: flex;
@@ -29,13 +52,14 @@ li a{
     border: none;
     background-color: transparent;
     gap: 12px;
+    cursor: pointer;
 }
 section{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(168, 168, 168, 0.233);
+    background-color: rgba(172, 166, 166, 0.233);
     height: 80vh;
 }
 .title {
@@ -49,12 +73,21 @@ section{
 }
 
 .formu{
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    height: 400px;
-    padding: 20px;
-    border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 400px;
+  padding: 20px;
+  border-radius: 6px;
+  z-index: 1001;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+.formu span{
+  cursor: pointer;
 }
 .form {
 
@@ -97,7 +130,7 @@ section{
     padding: 10px 15px;
     border-radius: 20px;
     border: none;
-    background: teal;
+    background: rgb(19, 60, 173);
     color: white;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -125,4 +158,115 @@ section{
 #alterar_senha h1{
     text-align: center;
     margin-bottom: 70px;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  .loader {
+    --clr: #3498db;
+    width: 50px;
+    height: 50px;
+    position: relative;
+  }
+  
+  .loader:before,
+  .loader:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    border: 10px solid transparent;
+    border-top-color: var(--clr);
+  }
+  
+  .loader:before {
+    z-index: 100;
+    animation: spin 1s infinite;
+  }
+  
+  .loader:after {
+    border: 10px solid #ccc;
+  }
+  
+  /* Animação do spinner */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+
+
+.slider{
+  margin: 0 auto;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+}
+.slides{
+  width: 400px;
+  height: 400px;
+  display: flex;
+}
+.slides input{
+  display: none;
+}
+.slide{
+  width: 25%;
+  position: relative;
+}
+.slide img{
+  width: 800px;
+}
+.manual-navigation{
+  position: absolute;
+  width: 800px;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn{
+  border: 1px solid rgb(134, 110, 66);
+  padding: 5px;
+  cursor: pointer;
+}
+
+
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.3); /* opcional: escurece levemente */
+  z-index: 1000; /* abaixo do modal */
+}
+
+
+
+
+
+
+
+.teste img{
+  width: 100%;
+  height: 100%;
 }

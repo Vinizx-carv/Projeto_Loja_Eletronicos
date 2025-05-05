@@ -46,6 +46,26 @@ document.getElementById('rec').addEventListener('click', function() {
     document.getElementById('loginForm').style.display = 'none';
 });
 
-document.getElementById('closeModal').addEventListener('click', function() {
+document.getElementById('closeModal3').addEventListener('click', function() {
     document.getElementById('alterar_senha').style.display = 'none';
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById('closeModal3').addEventListener('click', function () {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('blurOverlay').style.display = 'none';
+});
+  
