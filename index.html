@@ -6,28 +6,36 @@
     <title>Projeto Wed</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
 
+ 
+    <div id="preloader">
+        <div class="loader"></div>
+      </div>
+     
+
     <header>
-        <h1>
-            LOGO
-        </h1>
+        <img src="assents/logo.png" alt="" width="120px">
         <nav>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#produtos">Protudos</a></li>
+                <li><a href="#produtos">Produtos</a></li>
                 <li><a href="#contatos">Contato</a></li>
             </ul>
         </nav>
         <button id="btnLogin">
             <img src="assents/user (1).png" alt="" width="30px">
-            <p >Entre ou Cadastre-se Para ver ser pedidos</p>
+            <p ><strong>Entre ou Cadastre-se</strong><br>Para ver ser pedidos</p>
         </button>
     </header>
 
 
     <section>
+      
+            <div id="blurOverlay" class="blur-overlay" style="display: none;">
+<div class="main">
         <div id="loginForm" class="formu" style="display:none;">
             <span class="close-btn" id="closeModal">&times;</span>
             <p class="title">Entrar</p>
@@ -43,6 +51,7 @@
               Não tem conta?<span id="sign-up-link"> Cadastre-se</span>
             </p>
         </div>
+        
 
         <div id="cadastroForm" class="formu" style="display:none;">
             <span class="close-btn" id="closeModal2">&times;</span>
@@ -71,13 +80,72 @@
           </form>
       
           <p id="response-message"></p>
+
+        
+            </div>
+            
+            </div>
+ 
         </div>
+
+
+        <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            
+        </div>
+
+        <div class="manual-navigation">
+            <label for="radio1" class="manual.btn"></label>
+            <label for="radio2" class="manual.btn"></label>
+            <label for="radio3" class="manual.btn"></label>
+        </div>
+    </div>
+
     </section>
+
+    <section class="sobre">
+        <h1>Sobre</h1>
+    </section>
+
+    <section class="produtos">
+        <h1>Produtos</h1>
+    </section>
+
+    <section class="contatos">
+        <h1>Contato</h1>
+    </section>
+
+   
+</div>
+
+
+
 
 
 <script src="js/login.js"></script>
 <script src="js/cadastro.js"></script>
+
+<script src="js/alterar_senha.js"></script>
+<script>
+    window.addEventListener("load", function () {
+    const preloader = document.getElementById("preloader");
+    preloader.style.opacity = "0";
+    preloader.style.transition = "opacity 0.5s ease";
+
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 500);
+  });
+
+
+ 
+
+</script>
 <script src="js/alterar_senha.js" ></script>
     
+ 
+>>>>>>>>> Temporary merge branch 2
 </body>
 </html>  
