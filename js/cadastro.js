@@ -36,3 +36,19 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     alert('Erro de conexão com a API.');
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+document.getElementById('closeModal2').addEventListener('click', function () {
+  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('blurOverlay').style.display = 'none';
+});
+

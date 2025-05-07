@@ -49,4 +49,44 @@ document.getElementById('btnLogin').addEventListener('click', function() {
   document.getElementById('closeModal2').addEventListener('click', function() {
     document.getElementById('cadastroForm').style.display = 'none';
   });
+
+
+  window.addEventListener("load", function () {
+    const preloader = document.getElementById("preloader");
+    preloader.style.display = "none";
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
+
+
+
+
+  //temporario procura forma melhor de fazer
+  document.getElementById('btnLogin').addEventListener('click', function () {
+    document.getElementById('loginForm').style.display = 'flex';
+    document.getElementById('blurOverlay').style.display = 'block';
+});
+//esse tambem
+document.getElementById('closeModal').addEventListener('click', function () {
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('blurOverlay').style.display = 'none';
+});
+  
+
+
+
+
