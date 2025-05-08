@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja Tech</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/filtro.css">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
 
     <section>
       
-            <div id="blurOverlay" class="blur-overlay" style="display: none;">
+        <div id="blurOverlay" class="blur-overlay" style="display: none;">
         <div class="main">
         <div id="loginForm" class="formu">
             <span class="close-btn" id="closeModal">&times;</span>
@@ -112,29 +113,43 @@
 </div>
 </div>
 
-    </section>
-    <div class="produtos">
-        <div class="filter">
-            <h1>Filtrar</h1>
-        </div>
-        <div class="box-product">
-            <p>3</p>
-        </div>
-    </div>
 
+
+</section>
+
+<section class="product">
+    <div class="container-filtros">
+ 
+    <div class="filtros">
+        <h1>Filtro</h1>  
+        <div class="filtro-section">
+            <label for="precoRange">Preço até: R$ <span id="preco-valor">0</span></label>
+            <input type="range" id="preco" min="0" max="10000" step="50" value="10000">
+        </div>
+
+        <div class="filtro-section1">
+            <h3>Marca</h3>
+            <div id="marca-container" class="marca-container"></div>
+        </div>
+        
+        <div class="filtro-section2">
+            <h3>Tipo</h3>
+            <div id="tipo-container"></div>
+        </div>
+    <button id="filtrar">Filtrar</button>
+  </div>
+
+  <div class="produtos" id="pro"></div>
 </div>
+</section>
 
 
-
-
-
+<script src="js/filtro.js"></script>
 <script src="js/login.js"></script>
 <script src="js/cadastro.js"></script>
 <script src="js/alterar_senha.js"></script>
 <script src="js/index.js"></script>
 <script src="js/alterar_senha.js" ></script>
     
- 
->>>>>>>>> Temporary merge branch 2
 </body>
 </html>  
