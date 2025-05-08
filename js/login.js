@@ -11,21 +11,22 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     const usuarios = await response.json();
 
     if (usuarios.length === 0) {
-      alert('Usuário não encontrado!');
+      mostrarMensagem('Usuário não encontrado!');
       return;
     }
 
     const usuario = usuarios[0];
-
+    
     if (usuario.senha === senha) {
-      alert(`Bem-vindo, ${usuario.nome}!`);
+      mostrarMensagem(`Bem-vindo, ${usuario.nome}!`);
       // Aqui você pode redirecionar, ex: window.location.href = "produtos.html";
-    } else {
-      alert('Senha incorreta!');
+    } else { 
+      mostrarMensagem('Senha incorreta!');
+
     }
   } catch (err) {
     console.error(err);
-    alert('Erro ao tentar fazer login.');
+     mostrarMensagem('Erro ao tentar fazer login.');
   }
 });
 
@@ -55,21 +56,6 @@ document.getElementById('btnLogin').addEventListener('click', function() {
     const preloader = document.getElementById("preloader");
     preloader.style.display = "none";
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
 
 
@@ -85,8 +71,3 @@ document.getElementById('closeModal').addEventListener('click', function () {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('blurOverlay').style.display = 'none';
 });
-  
-
-
-
-

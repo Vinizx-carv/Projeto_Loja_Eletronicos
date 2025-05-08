@@ -27,3 +27,12 @@ Desenvolver uma loja virtual de eletrônicos acessível e funcional, permitindo 
 
 ## 📝 Considerações Finais
 O projeto alcançou os objetivos principais de navegação, compra e interação com os produtos. Ainda há espaço para melhorias, como integração com pagamento real, melhor autenticação e histórico de compras. A experiência foi enriquecedora para o aprendizado de APIs, JavaScript e manipulação do DOM.
+
+
+
+
+
+
+
+
+

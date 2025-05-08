@@ -14,7 +14,7 @@ document.getElementById("reset-password-form").addEventListener("submit", async 
         const usuario = usuarios.find(user => user.nome === nome && user.email === email);
 
         if (!usuario) {
-            alert('Usuário ou e-mail não encontrados.');
+            mostrarMensagem('Usuário ou e-mail não encontrados.');
             return;
         }
 
@@ -26,15 +26,15 @@ document.getElementById("reset-password-form").addEventListener("submit", async 
         });
 
         if (updateRes.ok) {
-            alert('Senha modificada com sucesso!');
+            mostrarMensagem('Senha modificada com sucesso!');
             window.location.href = 'index.html';
         } else {
-            alert('Erro ao mudar a senha. Tente novamente.');
+            mostrarMensagem('Erro ao mudar a senha. Tente novamente.');
         }
 
     } catch (err) {
         console.error(err);
-        alert('Erro de conexão com a API.');
+        mostrarMensagem('Erro de conexão com a API.');
     }
 });
 
