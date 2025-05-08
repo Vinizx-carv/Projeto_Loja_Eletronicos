@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja Tech</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/filtro.css">
 </head>
 
 <body>
@@ -60,7 +61,7 @@
 
     <section>
       
-            <div id="blurOverlay" class="blur-overlay" style="display: none;">
+        <div id="blurOverlay" class="blur-overlay" style="display: none;">
         <div class="main">
         <div id="loginForm" class="formu">
             <span class="close-btn" id="closeModal">&times;</span>
@@ -112,71 +113,38 @@
 </div>
 </div>
 
-<<<<<<<<< Temporary merge branch 1
-    </section>
-    <div class="produtos">
-        <div class="filter">
-            <h1>Filtrar</h1>
-=========
 
-        <!--
-        <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Loja de Eletrônicos</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Produtos Eletrônicos</h1>
-  
-  <div class="filtros">
-    <div class="filtro-section">
-      <button class="collapsible">Marca</button>
-      <div class="content" id="marca-container"></div>
-    </div>
 
-    <div class="filtro-section">
-      <button class="collapsible">Tipo</button>
-      <div class="content" id="tipo-container"></div>
-    </div>
+</section>
 
-    <div class="filtro-section">
-      <label for="precoRange">Preço até: R$ <span id="preco-valor">0</span></label>
-      <input type="range" id="preco" min="0" max="10000" step="50" value="10000">
-    </div>
+<section class="product">
+    <div class="container-filtros">
+ 
+    <div class="filtros">
+        <h1>Filtro</h1>  
+        <div class="filtro-section">
+            <label for="precoRange">Preço até: R$ <span id="preco-valor">0</span></label>
+            <input type="range" id="preco" min="0" max="10000" step="50" value="10000">
+        </div>
 
+        <div class="filtro-section1">
+            <h3>Marca</h3>
+            <div id="marca-container" class="marca-container"></div>
+        </div>
+        
+        <div class="filtro-section2">
+            <h3>Tipo</h3>
+            <div id="tipo-container"></div>
+        </div>
     <button id="filtrar">Filtrar</button>
   </div>
 
-  <div class="produtos" id="produtos"></div>
-
-  <script src="js/filtro.js"></script>
-</body>
-</html>        
-        
-        -->
-
-
-        <div class="navigation-auto">
-            <div class="auto-btn1"></div>
-            <div class="auto-btn2"></div>
-            <div class="auto-btn3"></div>
-            
->>>>>>>>> Temporary merge branch 2
-        </div>
-        <div class="box-product">
-            <p>3</p>
-        </div>
-    </div>
-
+  <div class="produtos" id="pro"></div>
 </div>
+</section>
 
 
-
-
-
+<script src="js/filtro.js"></script>
 <script src="js/login.js"></script>
 <script src="js/cadastro.js"></script>
 <script src="js/alterar_senha.js"></script>

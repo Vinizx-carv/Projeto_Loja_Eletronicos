@@ -11,7 +11,9 @@ let produtosGlobal = [];
 function criarCard(produto) {
   return `
     <div class="card">
+      <div class="card-image">
       <img src="${produto.imagemPrincipal}" alt="${produto.nome}"/>
+      </div>
       <h2>${produto.nome}</h2>
       <p>${produto.descricao}</p>
       <p><strong>Preço:</strong> R$ ${produto.preco}</p>
