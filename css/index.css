@@ -28,24 +28,17 @@ header{
   background-color: #e8e4e4;
   padding: 0 20px;
 }
-nav{
-  backdrop-filter:blur(10px);
-  padding: 1rem;
-  background-color: #908da2;
-
-
-}
-nav ul{
-    display: flex;
-    gap: 3rem;
-    list-style: none; 
-    transition: color 0.3s ease;
-}
 .clicaveis{
   display: flex;
   align-items: center;
   gap: 50px
 }
+
+
+
+
+
+
 
 #carrinho{
   width: 30vh;
@@ -58,9 +51,7 @@ nav ul{
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
-
 }
-
 
 .carrinho-head {
 
@@ -151,7 +142,12 @@ li a{
     cursor: pointer;
     color: #fff;
 }
-
+#loginform{
+  display: none;
+}
+.active{
+  display: flex;
+}
 section{
     display: flex;
     flex-direction: column;
@@ -327,4 +323,36 @@ section{
   width: 20%;
   height: 100%;
   background-color: #747474;
+}
+
+
+.mensagem{
+  width: 300px;
+  font-size: 1.1rem;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #cacace;
+  color: #21c512;
+  padding: 8px 40px;
+  position: absolute;
+  z-index: 9999;   
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: mensagem 4s forwards;
+
+}
+@keyframes mensagem {
+  0%{
+    opacity: 0;
+    transform: translate(-50%,10px)
+  }20%, 80%{
+    opacity: 1;
+    transform: translate(-50%,100px)
+  }100%{
+    opacity: 0;
+    transform: translate(-50%,10px)
+  }
 }

@@ -10,6 +10,7 @@ window.addEventListener("load", function () {
 
 
  
+ 
 
   document.getElementById('closeModal4').addEventListener('click', function () {
     document.getElementById('carrinho').style.display = 'none';
@@ -22,3 +23,14 @@ document.getElementById('button-carrinho').addEventListener('click', function ()
 });
   
 
+
+function mostrarMensagem(texto) {
+  const div = document.createElement('div');
+  div.className = 'mensagem';
+  div.innerHTML = `<p>${texto}</p>`;
+  document.body.appendChild(div);
+
+  setTimeout(() => {
+    div.remove();
+  }, 4000); // igual à duração da animação
+}
