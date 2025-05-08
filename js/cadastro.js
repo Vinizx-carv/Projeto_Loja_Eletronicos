@@ -13,7 +13,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     const jaExiste = data.some(u => u.email === email);
 
     if (jaExiste) {
-      alert('E-mail já está cadastrado!');
+      mostrarMensagem('E-mail já está cadastrado!');
       return;
     }
 
@@ -25,15 +25,15 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
     });
 
     if (response.ok) {
-      alert('Usuário cadastrado com sucesso!');
+      mostrarMensagem('Usuário cadastrado com sucesso!');
       window.location.href = 'index.html';
     } else {
-      alert('Erro ao cadastrar. Tente novamente.');
+      mostrarMensagem('Erro ao cadastrar. Tente novamente.');
     }
 
   } catch (err) {
     console.error(err);
-    alert('Erro de conexão com a API.');
+    mostrarMensagem('Erro de conexão com a API.');
   }
 });
 
