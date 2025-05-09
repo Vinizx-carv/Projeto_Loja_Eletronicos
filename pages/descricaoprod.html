@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="pt-br"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descrição do Produto</title>
@@ -10,33 +9,49 @@
 <body>
     
     <header>
-        <img src="../assents/logobranca.png" alt="" width="130px">
-        
-
-        <div class="clicaveis">
+        <img src="../assents/logobranca.png" alt="Logo Loja Tech" width="130px"> <div class="clicaveis">
             <button id="btnLogin">
-                <img src="../assents/usuariobranco.png" alt="" width="50px" >
-                <p ><strong>Entre ou Cadastre-se</strong><br>Para ver ser pedidos</p>
-            </button>
-
+                <img src="../assents/usuariobranco.png" alt="Ícone do Usuário" width="50px" > <p ><strong>Entre ou Cadastre-se</strong><br>Para ver seus pedidos</p> </button>
             <div id="button-carrinho" class="carrinho">
-                <img src="../assents/carrinhobranco.png" alt="" width="35px">
-            </div>
+                <img src="../assents/carrinhobranco.png" alt="Ícone do Carrinho" width="35px"> </div>
         </div>
     </header>
 
     <main>
-        <div class="img-principal">
-            <img src="" alt="">
-        </div>
-        <div img-secundaria>
-            <img src="" alt="">
-        </div>
-        <div class="info-prod">
-            <h1>Controle</h1>
-            <p>R$ 189,90</p>
-            <button class="button-comprar">Comprar</button>
+        <div class="produto-detalhes-container"> <div class="imagens-produto">
+                <div class="img-principal">
+                    <img src="" alt="Imagem principal do produto" id="desc-img-principal"> </div>
+                <div class="img-secundaria-container"> </div>
+            </div>
+            <div class="info-prod">
+                <h1 id="desc-nome-produto">Nome do Produto</h1> <p id="desc-preco-produto">R$ 0,00</p> <button class="button-comprar-desc" id="desc-btn-comprar">Comprar</button> </div>
         </div>
     </main>
-</body>
+
+    <div id="carrinho" style="display: none;">
+        <div class="carrinho-head">
+            <h1>Meu carrinho</h1>
+            <span class="close-btn" id="closeModal4">&times;</span>
+        </div>
+        <div class="conteudo">
+            </div>
+        <div class="bloco-info">
+            <div class="carrinho-subtotal">
+                <h1>Subtotal</h1>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="carrinho-total">
+                <h1>Total</h1>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="button-comprar">
+                <button class="comprar">Finalizar Compra</button> </div>
+        </div>
+    </div>
+    
+    <div class="mensagem" id="mensagem" 
+        <p></p>
+    </div>
+
+    <script src="../js/index.js"></script> <script src="../js/descricaoprod_logic.js"></script> </body>
 </html>

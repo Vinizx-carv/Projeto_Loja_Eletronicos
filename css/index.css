@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+    box-sizing: border-box; /* Adicionado para melhor controle de padding e border */
 }
 
 html, body {
@@ -9,6 +10,7 @@ html, body {
   font-size: 16.2px; /* Tamanho da fonte */
   margin: 0;
   padding: 0;
+  background-color: #efeded; /* Movido de uma segunda declaração de body para cá */
 }
 header{
     display: flex;
@@ -16,13 +18,12 @@ header{
     align-items: center;
     padding: 10px 40px;
     background-color: #3c1ee6;
-
 }
 
 #busca{
   width: 50%;
   height: 40px;
-  background-color: #3498db;
+  /* background-color: #3498db;  Esta linha foi sobrescrita pela de baixo */
   border-radius: 40px;
   outline: none;
   border: none;
@@ -35,82 +36,168 @@ header{
   gap: 50px
 }
 
-
-
-
-
-
-
+/* --- ESTILOS DO CARRINHO DE COMPRAS --- */
 #carrinho{
-  width: 30vh;
+  /* width: 30vh; */ /* SUGESTÃO: 'vh' é porcentagem da ALTURA da tela. Para largura, considere 'vw' (largura da tela) ou um valor fixo. Ex: width: 350px; ou width: 30vw; */
+  width: 350px; /* Exemplo de largura fixa, ajuste conforme necessário */
   height: 100vh;
   background-color: #fff;
   position: fixed;
   top: 0;
   right: 0;
-  display: flex;
+  display: flex; /* Controlado por JS para exibir/ocultar */
   flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
+  /* justify-content: space-between;  Removido para permitir que .conteudo cresça */
+  padding: 0; /* Removido padding geral aqui, será aplicado nas seções internas */
+  box-shadow: -3px 0 8px rgba(0,0,0,0.15); /* Adicionado para melhor visualização */
+  z-index: 1001; /* Certifique-se que está acima de outros elementos como .blur-overlay */
 }
 
 .carrinho-head {
-
-  font-size: 11px;
+  font-size: 11px; /* Este tamanho de fonte é bem pequeno para um título */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 15px 20px; /* Espaçamento interno para o cabeçalho do carrinho */
+  background-color: #333; /* Cor de fundo para o cabeçalho do carrinho */
+  color: white; /* Cor do texto para o cabeçalho */
 }
-.carrinho-head span{
-  font-size: 20px;
+.carrinho-head h1 { /* Adicionado para estilizar o H1 dentro do cabeçalho */
+    margin: 0;
+    font-size: 1.4em; /* Tamanho de fonte mais apropriado para o título */
+}
+.carrinho-head span{ /* Botão de fechar (X) */
+  font-size: 1.8em; /* Tamanho do X */
+  font-weight: bold;
   cursor: pointer;
+  color: #fff;
 }
 
+/* Container para os itens do carrinho */
+#carrinho .conteudo {
+    flex-grow: 1;         /* Permite que esta seção ocupe o espaço vertical disponível */
+    overflow-y: auto;     /* Adiciona barra de rolagem vertical se os itens excederem a altura */
+    padding: 0 20px;      /* Espaçamento horizontal interno para a lista de itens */
+    display: flex;
+    flex-direction: column;
+}
 
-.button-comprar{
+/* Estilo para cada item individual no carrinho */
+.carrinho-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0; /* Espaçamento vertical para cada item */
+    border-bottom: 1px solid #e0e0e0; /* Linha separadora */
+}
+.carrinho-item:last-child {
+    border-bottom: none; /* Remove a borda do último item */
+}
+
+/* ESTILO CRUCIAL PARA A IMAGEM DENTRO DO CARRINHO */
+#carrinho .carrinho-item .carrinho-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+    display: block;
+}
+
+.carrinho-item-info {
+    flex-grow: 1; /* Ocupa o espaço restante ao lado da imagem */
+}
+.carrinho-item-info h4 { /* Nome do produto no carrinho */
+    margin: 0 0 6px 0;
+    font-size: 0.95em;
+    color: #333;
+}
+.carrinho-item-info p { /* Preço do produto no carrinho */
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Botão de remover item do carrinho */
+.remover-item-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em; /* Ajustado para ser proporcional */
+    font-weight: bold;
+    margin-left: 10px;
+    transition: background-color 0.2s ease;
+}
+.remover-item-btn:hover {
+    background-color: #e60000;
+}
+
+/* Bloco de informações no rodapé do carrinho (subtotal, total, botão comprar) */
+.bloco-info {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    background-color: #f0f0f0;
+}
+
+.carrinho-subtotal,
+.carrinho-total {
+  display: flex;
+  align-items: center;
+  font-size:10px ; /* Este H1 aqui está muito pequeno */
+  justify-content: space-between;
+  margin-bottom: 12px; /* Ajustado */
+}
+.carrinho-subtotal h1, /* Estilo para os Títulos "Subtotal", "Total" */
+.carrinho-total h1 {
+    margin: 0;
+    font-weight: normal;
+    font-size: 1em; /* Tamanho mais legível */
+    color: #555;
+}
+.carrinho-subtotal p, /* Estilo para os valores de Subtotal, Total */
+.carrinho-total p {
+  font-size: 1em; /* Tamanho mais legível e consistente */
+  font-weight: bold;
+  color: #333;
+}
+/* Destaque para o Total Final */
+.carrinho-total h1,
+.carrinho-total p {
+    font-size: 1.1em;
+    color: #000;
+}
+
+.button-comprar{ /* Container do botão "Comprar" no carrinho */
   display: flex;
   align-items: center;
   width: 100%;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 0; /* Removido margin-bottom se .bloco-info já tem padding */
 }
-
-.carrinho-subtotal{
-  display: flex;
-  align-items: center;
-  font-size:10px ;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.carrinho-subtotal p{
-  font-size: 19px;
-}
-.carrinho-total{
-  display: flex;
-  align-items: center;
-  font-size:10px ;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.carrinho-total p{
-  font-size: 19px;
-}
-
-.comprar{
-  background-color: #21c512;
+.comprar{ /* Botão "Comprar" final no carrinho */
+  background-color: #28a745; /* Verde mais comum */
   width: 100%;
-  height: 5vh;
+  height: auto; /* Altura automática baseada no padding */
+  padding: 14px; /* Padding para altura e conforto */
   border: none;
-  border-radius: 10px;
+  border-radius: 5px; /* Raio de borda mais sutil */
   color: #fff;
   font-weight: 600;
-  font-size: 20px;
-
+  font-size: 1.1em; /* Ajustado */
+  transition: background-color 0.2s ease;
+  cursor: pointer;
 }
+.comprar:hover {
+    background-color: #218838;
+}
+/* --- FIM DOS ESTILOS DO CARRINHO --- */
 
 
-
-a::after{
+a::after{ /* Efeito sublinhado para links genéricos */
   content: "";
   position: absolute;
   width: 0;
@@ -118,13 +205,14 @@ a::after{
   bottom: 0;
   left: 50%;
   transition: all 0.3s ease;
+  /* Este seletor pode precisar de um pai com position: relative se 'a' não for */
 }
 a:hover::after{
   width: 100%;
   left:0;
 }
 
-li a{ 
+li a{
     color: black;
     list-style: none;
     text-decoration: none;
@@ -143,63 +231,75 @@ li a{
     cursor: pointer;
     color: #fff;
 }
-#loginform{
-  display: none;
+#loginform{ /* Referencia a um elemento que talvez seja .formu com id loginForm */
+  display: none; /* Controlado por JS */
 }
-.active{
-  display: flex;
+.active{ /* Classe para mostrar formulários */
+  display: flex !important; /* Adicionado !important se houver conflito, mas idealmente não seria necessário */
 }
-section{
+section{ /* Estilo genérico de section - pode precisar de ajustes dependendo do conteúdo */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-background-color: #ffffff;
-    height: 80vh;
+/* background-color: #ffffff; */ /* Removido se o body já tem #efeded */
+    /* height: 80vh; */ /* Altura fixa pode não ser ideal para todas as sections */
+    padding: 20px 0; /* Adicionado padding vertical */
 }
-.title {
+.title { /* Título dentro de formulários */
     text-align: center;
     margin: 10px 0 30px 0;
     font-size: 28px;
     font-weight: 800;
 }
-#cadastroForm{
-    flex-direction: column;
+#cadastroForm{ /* ID do formulário de cadastro */
+    flex-direction: column; /* Já é o padrão de .form, redundante se aplicado a .formu */
 }
 
-.formu{
-  display: flex;
+.formu{ /* Container para os modais de formulário (login, cadastro, etc.) */
+  display: flex; /* Alterado por JS para .active */
   flex-direction: column;
-background-color: #ffffff;
-  height: 400px;
-  padding: 20px;
-  border-radius: 6px;
+  background-color: #ffffff;
+  /* height: 400px; */ /* Altura automática é melhor */
+  width: 440px; /* Largura fixa para os formulários */
+  max-width: 90%; /* Garante que não exceda a largura da tela em dispositivos menores */
+  padding: 30px; /* Aumentado padding */
+  border-radius: 8px; /* Aumentado raio */
   z-index: 1001;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-.formu span{
+.formu span.close-btn{ /* Estilo para o botão de fechar nos formulários */
   cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5em;
+  color: #777;
 }
-.form {
+.formu span.close-btn:hover {
+    color: #333;
+}
+
+.form { /* Formulário interno */
     display: flex;
     flex-direction: column;
     gap: 18px;
     margin-bottom: 15px;
-    border-radius: 20px;
-    width: 400px;
-
+    /* border-radius: 20px; */ /* Removido, .formu já tem */
+    width: 100%; /* Ocupa a largura do .formu */
 }
   
 .input {
-    border-radius: 20px;
+    border-radius: 8px; /* Ajustado */
     border: 1px solid #c0c0c0;
     outline: 0 !important;
     box-sizing: border-box;
     padding: 12px 15px;
+    font-size: 1em; /* Adicionado para consistência */
 }
   
 .page-link {
@@ -221,13 +321,15 @@ background-color: #ffffff;
 }
   
 .form-btn {
-    padding: 10px 15px;
-    border-radius: 20px;
+    padding: 12px 15px; /* Ajustado padding */
+    border-radius: 8px; /* Ajustado */
     border: none;
     background: rgb(19, 60, 173);
     color: white;
     cursor: pointer;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    font-size: 1em; /* Adicionado */
+    font-weight: bold; /* Adicionado */
 }
   
   .form-btn:active {
@@ -237,10 +339,11 @@ background-color: #ffffff;
     margin: 0;
     font-size: 14px;
     color: #747474;
+    text-align: center; /* Centralizado */
 }
   
 #sign-up-link {
-    margin-left: 1px;
+    margin-left: 4px; /* Ajustado */
     font-size: 14px;
     text-decoration: underline;
     text-decoration-color: teal;
@@ -248,9 +351,9 @@ background-color: #ffffff;
     cursor: pointer;
     font-weight: 800;
 }
-#alterar_senha h1{
+#alterar_senha h1{ /* Título dentro do modal de alterar senha */
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 30px; /* Reduzido margin */
 }
 
 #preloader {
@@ -259,13 +362,14 @@ background-color: #ffffff;
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo para o preloader */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
   }
   .loader {
-    --clr: #3498db;
+    --clr: #3498db; /* Cor do spinner */
     width: 50px;
     height: 50px;
     position: relative;
@@ -290,7 +394,7 @@ background-color: #ffffff;
   }
   
   .loader:after {
-    border: 10px solid #ccc;
+    border: 10px solid #ccc; /* Círculo de fundo do spinner */
   }
   
   /* Animação do spinner */
@@ -310,105 +414,210 @@ background-color: #ffffff;
   left: 0;
   width: 100%;
   height: 100%;
-  backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.3); /* opcional: escurece levemente */
-  z-index: 1000; /* abaixo do modal */
+  backdrop-filter: blur(5px); /* Reduzido blur */
+  background-color: rgba(0, 0, 0, 0.4); /* Levemente mais escuro */
+  z-index: 1000; /* abaixo dos modais de formulário e carrinho */
 }
 
 
-.produtos{
-  height: 70vh;
-}
-.filter{
-  width: 20%;
-
-/* parte do filtro */
-}
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-color: #efeded;
-}
-
-.container {
-  display: flex;
-  gap: 20px;
+.produtos{ /* Container para a lista de produtos na Index.html */
+  /* height: 70vh; */ /* Altura automática é melhor */
+  width: 100%; /* Para ocupar o espaço ao lado do filtro */
   padding: 20px;
+  display: flex; /* Adicionado para organizar os cards */
+  flex-wrap: wrap; /* Para que os cards quebrem linha */
+  gap: 20px; /* Espaço entre os cards */
+  justify-content: center; /* Centraliza os cards se houver espaço sobrando */
+}
+/* .filter{ */ /* Movido para .container-filtros .filtros */
+  /* width: 20%; */
+/* } */
+
+/* Container geral para filtros e produtos */
+.container-filtros { /* Nova classe para envolver filtros e produtos */
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1400px; /* Largura máxima para o conteúdo principal */
+    margin: 0 auto; /* Centraliza o container */
 }
 
 /* Filtros */
-.filter {
-  width: 250px;
-  padding: 15px;
+.filtros { /* Renomeado de .filter para .filtros para clareza com a tag <filter> */
+  width: 280px; /* Largura aumentada para os filtros */
+  padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #fff;
+  height: fit-content; /* Para que a altura se ajuste ao conteúdo */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.filter h2 {
+.filtros h1 { /* Ajustado de .filter h2 para .filtros h1 */
   font-size: 1.5em;
-  margin-bottom: 10px;
+  margin-top: 0; /* Removido margin-top */
+  margin-bottom: 20px; /* Aumentado margin-bottom */
+  border-bottom: 1px solid #eee; /* Adicionada linha separadora */
+  padding-bottom: 10px; /* Espaçamento para a linha */
 }
 
-.filter-section {
+.filtro-section, /* Unificado com .filtro-section1 e .filtro-section2 */
+.filtro-section1,
+.filtro-section2 {
   margin-bottom: 20px;
 }
+.filtro-section label,
+.filtro-section1 h3,
+.filtro-section2 h3 {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
 
-.price-range input[type="range"] {
+.price-range input[type="range"], /* Seletor mais específico */
+#preco { /* Estilo para o input range de preço */
   width: 100%;
+  margin-top: 5px;
+}
+
+.marca-container div, /* Estilos para checkboxes de marca e tipo */
+#tipo-container div {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+.marca-container input[type="checkbox"],
+#tipo-container input[type="checkbox"] {
+    margin-right: 8px;
 }
 
 
-
-.content {
+.content { /* Conteúdo colapsável nos filtros (se usado) */
   display: none;
   overflow: hidden;
   padding-left: 10px;
 }
 
-select {
+select { /* Estilo para selects nos filtros (se usado) */
   width: 100%;
-  padding: 5px;
+  padding: 8px; /* Aumentado padding */
   margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }
 
-button#filtrar {
+button#filtrar { /* Botão de filtrar */
   width: 100%;
-  padding: 10px;
-  background-color: #222;
+  padding: 12px; /* Aumentado padding */
+  background-color: #3c1ee6; /* Cor primária */
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 5px; /* Ajustado */
+  font-size: 1em; /* Adicionado */
+  font-weight: bold; /* Adicionado */
+  transition: background-color 0.2s ease;
+}
+button#filtrar:hover {
+    background-color: #2a0fab; /* Cor mais escura no hover */
 }
 
+
+/* Estilos para .card de produto (Exemplo, ajuste conforme seu HTML de card) */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: calc(33.333% - 20px); /* Exemplo para 3 colunas, ajuste o gap */
+    /* Para responsividade, use media queries para mudar o width */
+    min-width: 250px; /* Largura mínima do card */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+.card-image {
+    width: 100%;
+    height: 200px; /* Altura fixa para a imagem do card */
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+.card p {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 8px;
+    flex-grow: 1; /* Para que a descrição ocupe espaço e alinhe botões */
+}
+.card p strong {
+    color: #333;
+}
+/* Estilo para o botão "Adicionar ao Carrinho" DENTRO do card de produto */
+.adicionar-carrinho-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: auto; /* Empurra o botão para o final do card */
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ocupa toda a largura do card */
+}
+.adicionar-carrinho-btn:hover {
+    background-color: #0056b3;
+}
+
+
 .mensagem{
-  width: 300px;
+  width: auto; /* Largura automática baseada no conteúdo */
+  min-width: 300px; /* Largura mínima */
+  max-width: 90%;  /* Largura máxima */
   font-size: 1.1rem;
-  height: 40px;
+  /* height: 40px; */ /* Altura automática baseada no padding */
   display: flex;
   align-items: center;
+  justify-content: center; /* Centraliza o texto */
   border-radius: 10px;
-  background-color: #cacace;
-  color: #21c512;
-  padding: 8px 40px;
-  position: absolute;
-  z-index: 9999;   
-  top: 150px;
+  background-color: #333; /* Cor de fundo mais escura */
+  color: #fff; /* Texto branco para contraste */
+  padding: 15px 30px; /* Aumentado padding */
+  position: fixed; /* Alterado para fixed para melhor posicionamento */
+  z-index: 9999;
+  top: 20px; /* Posicionado no topo */
   left: 50%;
   transform: translateX(-50%);
   animation: mensagem 4s forwards;
-
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  opacity: 0; /* Começa invisível para a animação */
 }
 @keyframes mensagem {
   0%{
     opacity: 0;
-    transform: translate(-50%,10px)
-  }20%, 80%{
+    transform: translate(-50%, -50px); /* Começa acima e invisível */
+  }
+  10%, 90%{ /* Fica visível por mais tempo */
     opacity: 1;
-    transform: translate(-50%,100px)
-  }100%{
+    transform: translate(-50%, 0); /* Desliza para a posição */
+  }
+  100%{
     opacity: 0;
-    transform: translate(-50%,10px)
+    transform: translate(-50%, -50px); /* Desliza para cima e desaparece */
   }
 }
