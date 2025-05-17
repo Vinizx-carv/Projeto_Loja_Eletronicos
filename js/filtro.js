@@ -15,10 +15,10 @@ function criarCard(produto) {
       <img src="${produto.imagemPrincipal}" alt="${produto.nome}"/>
       </div>
       <h2>${produto.nome}</h2>
-      <p>${produto.descricao}</p>
-      <p><strong>Preço:</strong> R$ ${produto.preco}</p>
+    
+      <p>R$ ${produto.preco}</p>
       <p><strong>Marca:</strong> ${produto.marca}</p>
-      <p><strong>Tipo:</strong> ${produto.tipo}</p>
+    
     </div>
   `;
 }
@@ -53,7 +53,7 @@ function preencherFiltros(produtos) {
   marcaContainer.innerHTML = "";
   marcas.forEach(m => {
     marcaContainer.innerHTML += `
-      <div>
+      <div class="div-filtro">
         <input type="checkbox" class="marca-checkbox" value="${m}" id="marca-${m}">
         <label for="marca-${m}">${m}</label>
       </div>`;
