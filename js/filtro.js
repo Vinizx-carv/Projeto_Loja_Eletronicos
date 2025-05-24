@@ -1,5 +1,7 @@
+// URL da API
 const API_URL_PRO = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos';
 
+// Elementos da DOM
 const precoRange = document.getElementById("preco");
 const precoValor = document.getElementById("preco-valor");
 const marcaContainer = document.getElementById("marca-container");
@@ -7,14 +9,17 @@ const tipoContainer = document.getElementById("tipo-container");
 const produtosDiv = document.getElementById("pro");
 
 let produtosGlobal = [];
+let carrinho = [];
 
 function criarCard(produto) {
   return `
     <div class="card">
       <div class="card-image">
+
         <a href="pages/produto.html?id=${produto.id}">
           <img src="${produto.imagemPrincipal}" alt="${produto.nome}" />
         </a>
+
       </div>
       <h2>
         <a href="pages/produto.html?id=${produto.id}">
@@ -22,7 +27,9 @@ function criarCard(produto) {
         </a>
       </h2>
       <p>R$ ${produto.preco}</p>
-      <p><strong>Marca:</strong> ${produto.marca}</p>
+
+      <button onclick="adicionarAoCarrinho('${produto.id}')">Adicionar ao carrinho</button>
+
     </div>
   `;
 }
@@ -97,5 +104,75 @@ document.getElementById("filtrar").addEventListener("click", () => {
   exibirProdutos(filtrados);
 });
 
-carregarProdutos();
+function adicionarAoCarrinho(id) {
+  const produto = produtosGlobal.find(p => p.id === id);
+  if (!produto) return;
 
+  const itemNoCarrinho = carrinho.find(p => p.id === id);
+
+  if (itemNoCarrinho) {
+    itemNoCarrinho.quantidade++;
+  } else {
+    carrinho.push({ ...produto, quantidade: 1 });
+  }
+
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+  const carrinhoDiv = document.querySelector("#carrinho .conteudo");
+  carrinhoDiv.innerHTML = "";
+
+  let subtotal = 0;
+
+  carrinho.forEach(item => {
+    const preco = parseFloat(item.preco);
+    subtotal += preco * item.quantidade;
+
+    carrinhoDiv.innerHTML += `
+      <div class="item-carrinho" style="border-bottom: 1px solid #ccc; padding: 10px 0; display: flex; align-items: center;">
+        <img src="${item.imagemPrincipal}" alt="${item.nome}" style="width: 50px; height: 50px; margin-right: 10px;">
+        <div>
+          <p><strong>${item.nome}</strong></p>
+          <p>Preço unitário: R$ ${preco.toFixed(2)}</p>
+          <p>Quantidade: ${item.quantidade}</p>
+          <p>Total: R$ ${(preco * item.quantidade).toFixed(2)}</p>
+          <div style="margin-top: 5px;">
+            <button onclick="aumentarQuantidade('${item.id}')">+</button>
+            <button onclick="diminuirQuantidade('${item.id}')">-</button>
+            <button onclick="removerItem('${item.id}')">Remover</button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  document.querySelector(".carrinho-subtotal p").textContent = `R$ ${subtotal.toFixed(2)}`;
+  document.querySelector(".carrinho-total p").textContent = `R$ ${subtotal.toFixed(2)}`;
+}
+
+function aumentarQuantidade(id) {
+  const item = carrinho.find(p => p.id === id);
+  if (item) {
+    item.quantidade++;
+    atualizarCarrinho();
+  }
+}
+
+function diminuirQuantidade(id) {
+  const item = carrinho.find(p => p.id === id);
+  if (item) {
+    item.quantidade--;
+    if (item.quantidade <= 0) {
+      carrinho = carrinho.filter(p => p.id !== id);
+    }
+    atualizarCarrinho();
+  }
+}
+
+function removerItem(id) {
+  carrinho = carrinho.filter(p => p.id !== id);
+  atualizarCarrinho();
+}
+
+carregarProdutos();
