@@ -15,17 +15,25 @@ function criarCard(produto) {
   return `
     <div class="card">
       <div class="card-image">
-        <img src="${produto.imagemPrincipal}" alt="${produto.nome}"/>
+
+        <a href="pages/produto.html?id=${produto.id}">
+          <img src="${produto.imagemPrincipal}" alt="${produto.nome}" />
+        </a>
+
       </div>
-      <h2>${produto.nome}</h2>
-      <p>${produto.descricao}</p>
-      <p><strong>Preço:</strong> R$ ${produto.preco}</p>
-      <p><strong>Marca:</strong> ${produto.marca}</p>
-      <p><strong>Tipo:</strong> ${produto.tipo}</p>
+      <h2>
+        <a href="pages/produto.html?id=${produto.id}">
+          ${produto.nome}
+        </a>
+      </h2>
+      <p>R$ ${produto.preco}</p>
+
       <button onclick="adicionarAoCarrinho('${produto.id}')">Adicionar ao carrinho</button>
+
     </div>
   `;
 }
+
 
 async function carregarProdutos() {
   try {
@@ -57,7 +65,7 @@ function preencherFiltros(produtos) {
   marcaContainer.innerHTML = "";
   marcas.forEach(m => {
     marcaContainer.innerHTML += `
-      <div>
+      <div class="div-filtro">
         <input type="checkbox" class="marca-checkbox" value="${m}" id="marca-${m}">
         <label for="marca-${m}">${m}</label>
       </div>`;

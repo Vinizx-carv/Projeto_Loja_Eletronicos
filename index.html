@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja Tech</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/filtro.css">
+    <link rel="stylesheet" href="css/slider.css">
 </head>
 
 <body>
-
- 
     <div id="preloader">
         <div class="loader"></div>
-      </div>
-     
+    </div>
 
     <header>
         <img src="assents/logobranca.png" alt="" width="130px">
         <input type="text" id="busca" placeholder=" O que você procura?">
-     
+
         <div class="clicaveis">
             <button id="btnLogin">
                 <img src="assents/usuariobranco.png" alt="" width="50px">
-                <p ><strong>Entre ou Cadastre-se</strong><br>Para ver ser pedidos</p>
+                <p><strong>Entre ou Cadastre-se</strong><br>Para ver ser pedidos</p>
             </button>
 
             <div id="button-carrinho" class="carrinho">
@@ -31,6 +30,27 @@
             </div>
         </div>
     </header>
+
+
+    <main>
+        <div class="slider">
+            <button class="prev" onclick="mudarSlide(-1)">❮</button>
+
+            <div class="slides" id="slides">
+                <div class="slide"><img
+                        src="https://images.pexels.com/photos/1525041/pexels-photo-1525041.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="Slide 1"></div>
+                <div class="slide"><img
+                        src="https://images.pexels.com/photos/842711/pexels-photo-842711.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="Slide 2"></div>
+                <div class="slide"><img
+                        src="https://images.pexels.com/photos/1643409/pexels-photo-1643409.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="Slide 3"></div>
+            </div>
+
+            <button class="next" onclick="mudarSlide(1)">❯</button>
+        </div>
+    </main>
 
     <div id="carrinho" style="display: none;">
         <div class="carrinho-head">
@@ -41,18 +61,18 @@
             <!--os produtos adicionados ao carrinho ficam aqui-->
         </div>
         <div class="bloco-info">
-        <div class="carrinho-subtotal">
-            <h1>Subtotal</h1>
-            <p>R$ 0,00</p>
+            <div class="carrinho-subtotal">
+                <h1>Subtotal</h1>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="carrinho-total">
+                <h1>Total</h1>
+                <p>R$ 0,00</p>
+            </div>
+            <div class="button-comprar">
+                <button class="comprar">Comprar</button>
+            </div>
         </div>
-        <div class="carrinho-total">
-            <h1>Total</h1>
-            <p>R$ 0,00</p>
-        </div>
-        <div class="button-comprar">
-        <button class="comprar">Comprar</button>
-    </div>
-    </div>
     </div>
 
     <div class="mensagem" id="mensagem">
@@ -60,96 +80,110 @@
     </div>
 
     <section>
-      
+
         <div id="blurOverlay" class="blur-overlay" style="display: none;">
-        <div class="main">
-        <div id="loginForm" class="formu">
-            <span class="close-btn" id="closeModal">&times;</span>
-            <p class="title">Entrar</p>
-            <form class="form">
-                <input type="email" class="input" id="email" placeholder="Email">
-                <input type="password" class="input" id="senha" placeholder="Senha">
-                <p class="page-link">
-                <span id="rec" class="page-link-label">Esqueceu sua senha?</span>
-                 </p>
-                <button class="form-btn">Entrar</button>
-            </form>
-            <p class="sign-up-label">
-              Não tem conta?<span id="sign-up-link"> Cadastre-se</span>
-            </p>
+            <div class="main">
+                <div id="loginForm" class="formu">
+                    <span class="close-btn" id="closeModal">&times;</span>
+                    <p class="title">Entrar</p>
+                    <form class="form">
+                        <input type="email" class="input" id="email" placeholder="Email">
+                        <input type="password" class="input" id="senha" placeholder="Senha">
+                        <p class="page-link">
+                            <span id="rec" class="page-link-label">Esqueceu sua senha?</span>
+                        </p>
+                        <button class="form-btn">Entrar</button>
+                    </form>
+                    <p class="sign-up-label">
+                        Não tem conta?<span id="sign-up-link"> Cadastre-se</span>
+                    </p>
+                </div>
+
+
+                <div id="cadastroForm" class="formu" style="display:none;">
+                    <span class="close-btn" id="closeModal2">&times;</span>
+                    <p class="title">Cadastrar</p>
+                    <form id="cadastroForm" class="form">
+                        <input type="text" class="input" id="nome" placeholder="Nome">
+                        <input type="email" class="input" id="email-regis" placeholder="Email">
+                        <input type="password" class="input" id="senha-regis" placeholder="Senha">
+
+                        <button type="submit" class="form-btn">Cadastrar</button>
+                    </form>
+
+                </div>
+
+                <div id="alterar_senha" class="formu" style="display:none;">
+                    <span class="close-btn" id="closeModal3">&times;</span>
+                    <p class="title">Redefinir senha</p>
+                    <form id="reset-password-form" class="form">
+                        <input type="text" id="username" class="input" placeholder="Nome" required>
+
+                        <input type="email" id="email-rec" class="input" placeholder="Email" required>
+
+                        <input type="password" id="new-password" class="input" placeholder="Noca senha" required>
+
+                        <button type="submit" class="form-btn">Alterar senha</button>
+                    </form>
+
+                    <p id="response-message"></p>
+
+                </div>
+            </div>
         </div>
-        
-
-        <div id="cadastroForm" class="formu" style="display:none;">
-            <span class="close-btn" id="closeModal2">&times;</span>
-            <p class="title">Cadastrar</p>
-            <form id="cadastroForm" class="form">
-                <input type="text" class="input" id="nome" placeholder="Nome">
-                <input type="email" class="input" id="email-regis" placeholder="Email">
-                <input type="password" class="input" id="senha-regis" placeholder="Senha">
-
-                <button type="submit" class="form-btn">Cadastrar</button>
-            </form>
-         
         </div>
+    </section>
 
-        <div id="alterar_senha" class="formu" style="display:none;">
-          <span class="close-btn" id="closeModal3">&times;</span>
-            <p class="title">Redefinir senha</p>
-          <form id="reset-password-form" class="form">
-              <input type="text" id="username" class="input" placeholder="Nome" required>
-      
-              <input type="email" id="email-rec" class="input" placeholder="Email" required>
-      
-              <input type="password" id="new-password" class="input" placeholder="Noca senha" required>
-      
-              <button type="submit"class="form-btn" >Alterar senha</button>
-          </form>
-      
-          <p id="response-message"></p>
 
+    <div class="tipos-pagamentos">
+        <div class="tipos-pagamentos-1">
+            <img src="assents/cartão.png" alt="">
+            <h1>Pix em <br> até 1254x</h1>
+        </div>
+        <div class="tipos-pagamentos-1">
+            <img src="assents/cartão.png" alt="">
+            <h1>Pix em <br> até 4x</h1>
+        </div>
+        <div class="tipos-pagamentos-1">
+            <img src="assents/cartão.png" alt="">
+            <h1>Pix em <br> até 4x</h1>
         </div>
     </div>
-</div>
-</div>
 
+    <section class="product">
+        <div class="container-filtros">
+            <div class="filtros-lateral">
+                <h1>Filtro</h1>
+                <div class="filtro-section">
+                    <label for="precoRange">Preço até: R$ <span id="preco-valor">0</span></label>
+                    <input type="range" id="preco" min="0" max="10000" step="50" value="10000">
+                </div>
 
+                <div class="filtro-section1">
+                    <h3>Marca</h3>
+                    <div id="marca-container" class="marca-container"></div>
+                </div>
 
-</section>
+                <div class="filtro-section2">
+                    <h3>Tipo</h3>
+                    <div id="tipo-container"></div>
+                </div>
+                <button id="filtrar">Filtrar</button>
+            </div>
 
-<section class="product">
-    <div class="container-filtros">
- 
-    <div class="filtros">
-        <h1>Filtro</h1>  
-        <div class="filtro-section">
-            <label for="precoRange">Preço até: R$ <span id="preco-valor">0</span></label>
-            <input type="range" id="preco" min="0" max="10000" step="50" value="10000">
+            <div class="produtos" id="pro"></div>
         </div>
-
-        <div class="filtro-section1">
-            <h3>Marca</h3>
-            <div id="marca-container" class="marca-container"></div>
-        </div>
-        
-        <div class="filtro-section2">
-            <h3>Tipo</h3>
-            <div id="tipo-container"></div>
-        </div>
-    <button id="filtrar">Filtrar</button>
-  </div>
-
-  <div class="produtos" id="pro"></div>
-</div>
-</section>
+    </section>
 
 
-<script src="js/filtro.js"></script>
-<script src="js/login.js"></script>
-<script src="js/cadastro.js"></script>
-<script src="js/alterar_senha.js"></script>
-<script src="js/index.js"></script>
-<script src="js/alterar_senha.js" ></script>
-    
+    <script src="js/filtro.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/cadastro.js"></script>
+    <script src="js/alterar_senha.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/alterar_senha.js"></script>
+    <script src="js/slider.js"></script>
+
 </body>
-</html>  
+
+</html>

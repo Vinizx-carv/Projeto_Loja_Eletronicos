@@ -1,26 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
-.container-filtros{
-    display: flex;
-    width: 100%;
+.container-filtros {
+  display: flex;
+  width: 100%;
+  font-family: "Poppins";
+  height: 100%;
+}
+.product {
+  background-color: #195ce2;
+  height: auto;
+}
 
+.filtros-lateral {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px 7px;
+  background-color: #fff5f590;
+  border-bottom: 1px solid #e7c0c0;
+}
 
-  }
-  
-.filtros {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 50px 7px;
-    background-color: #f8f8f890;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .filtro-section {
-    min-width: 200px;
-  }
+.filtro-section {
+  min-width: 200px;
+}
 
-  .filtro-section div {
+.filtro-section div {
   margin-bottom: 8px;
 }
 
@@ -33,91 +37,103 @@
 input[type="checkbox"] {
   margin-right: 5px;
 }
-.filtro-section1{
-    background-color: #f7f7f7;
-    border-radius:10px;
-    padding: 20px;
-    gap: 2px;
+
+.filtro-section1 {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  gap: 2px;
 
 }
 
-.filtro-section2{
-    background-color: #f7f7f7;
-    border-radius:10px;
-    padding: 20px;
+.div-filtro {
+  gap: 90px;
+}
+
+label {
+  font-size: 20px;
+
+}
+
+.filtro-section2 {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 .content {
-    background-color: #f1f1f1;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-    border-radius: 0 0 8px 8px;
-    padding: 0 10px;
-}  
-.content label {
-    display: block;
-    padding: 5px 0;
+  background-color: #ffffff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-radius: 0 0 8px 8px;
+  padding: 0 10px;
 }
-  
-  #preco {
-    width: 100%;
-  }
-  
-  .filtros button#filtrar {
-    padding: 10px 18px;
-    background-color: #61dafb;
-    color: #20232a;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    align-self: center;
-  }
-  
-  .filtros button#filtrar:hover {
-    background-color: #21a1f1;
-  }
-  
-  .produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 25px;
-    padding: 30px;
-    width: 100%;
-  }
-  
-  .card {
-    background-color:rgba(255, 255, 255);
-    padding: 15px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    transition: transform 0.2s;
-    border: 1px solid rgb(85, 82, 82);
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card img {
-    width: 200px;      
-    height: 200px;     
-    object-fit: cover; 
-    border-radius: 8px; 
-    display: block;
-    margin: 0 auto 10px;
-    object-fit: contain;
-  }
-  
-  .card h2 {
-    font-size: 16px;
-    margin: 0 0 8px 0;
-    color: #333;
-  }
-  
-  .card p {
-    font-size: 14px;
-    margin: 4px 0;
-    color: #555;
-  }
+
+.content label {
+  display: block;
+  padding: 5px 0;
+}
+
+#preco {
+  width: 100%;
+}
+
+.filtros button#filtrar {
+  padding: 10px 18px;
+  background-color: #61dafb;
+  color: #20232a;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: center;
+}
+
+.filtros button#filtrar:hover {
+  background-color: #21a1f1;
+}
+
+.produtos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 30px;
+  width: 100%;
+}
+
+.card {
+  background-color: rgba(255, 255, 255);
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: transform 0.2s;
+  border: none;
+}
+
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 10px;
+  object-fit: contain;
+}
+
+.card h2 {
+  font-size: 25px;
+  margin: 0 0 8px 0;
+}
+
+.card h2 a{
+  font-size: 25px;
+  margin: 0 0 8px 0;
+  text-decoration: none;
+  list-style: none;
+}
