@@ -12,16 +12,21 @@ function criarCard(produto) {
   return `
     <div class="card">
       <div class="card-image">
-      <img src="${produto.imagemPrincipal}" alt="${produto.nome}"/>
+        <a href="pages/produto.html?id=${produto.id}">
+          <img src="${produto.imagemPrincipal}" alt="${produto.nome}" />
+        </a>
       </div>
-      <h2>${produto.nome}</h2>
-    
+      <h2>
+        <a href="pages/produto.html?id=${produto.id}">
+          ${produto.nome}
+        </a>
+      </h2>
       <p>R$ ${produto.preco}</p>
       <p><strong>Marca:</strong> ${produto.marca}</p>
-    
     </div>
   `;
 }
+
 
 async function carregarProdutos() {
   try {

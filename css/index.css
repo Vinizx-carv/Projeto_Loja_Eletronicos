@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
 *{
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
+    font-family: 'Poppins';
+    
 }
 
 html, body {
-  font-family: 'Arial', sans-serif; /* Fonte padrão */
-  font-size: 16.2px; /* Tamanho da fonte */
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f6f4;
@@ -37,13 +40,6 @@ header{
   align-items: center;
   gap: 50px
 }
-
-
-
-
-
-
-
 #carrinho{
   width: 30vh;
   height: 100vh;
@@ -55,6 +51,7 @@ header{
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
+  z-index: 9999;
 }
 
 .carrinho-head {
@@ -374,6 +371,7 @@ select {
   align-items: center;
   display: flex;
   background-color: #efeded;
+  
 }
 .tipos-pagamentos-1{
   display: flex;
@@ -382,9 +380,13 @@ select {
 
 .tipos-pagamentos-1 img{
   width: 100px;
+  object-fit: cover;
+  object-fit: contain;
 }
-
-
+.tipos-pagamentos-1 h1{
+  font-weight: 500;
+  font-size:2rem;
+}
 button#filtrar {
   width: 100%;
   padding: 10px;

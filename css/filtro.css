@@ -4,14 +4,8 @@
   display: flex;
   width: 100%;
   font-family: "Poppins";
-
-
   height: 100%;
-
 }
-
-
-
 .product {
   background-color: #195ce2;
   height: auto;
@@ -117,6 +111,7 @@ label {
   border: none;
 }
 
+
 .card:hover {
   transform: translateY(-5px);
 }
@@ -134,11 +129,11 @@ label {
 .card h2 {
   font-size: 25px;
   margin: 0 0 8px 0;
-  color: #333;
 }
 
-.card p {
-  font-size: 20px;
-  margin: 4px 0;
-  color: #555;
+.card h2 a{
+  font-size: 25px;
+  margin: 0 0 8px 0;
+  text-decoration: none;
+  list-style: none;
 }
