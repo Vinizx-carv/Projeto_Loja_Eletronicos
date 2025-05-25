@@ -26,9 +26,8 @@ function criarCard(produto) {
           ${produto.nome}
         </a>
       </h2>
-      <p>R$ ${produto.preco}</p>
+       <p>Por <span class="preco-produto"> <strong>R$ ${produto.preco} </strong></span> no pix <br> ou 10x de R$ 339,90</p>
 
-      <button onclick="adicionarAoCarrinho('${produto.id}')" class="comprar">Adicionar ao carrinho</button>
 
     </div>
   `;

@@ -56,13 +56,34 @@ h1{
 .imagem-principal img:hover {
   transform: scale(1.6);
 }
-.imagens-miniaturas{
-    background-color: #ff0000;
-    height: 100%;
-    min-width: 20%;
+
+.imagens-Extras {
+    display: flex;
+    flex-direction: column; /* ou row/grid, depende do seu layout */
+    gap: 12px; 
+    padding: 4px;
 }
+
+.imagens-dentro {
+    width: 120px; 
+    height: 120px;
+    padding: 3px; 
+    border: 2px solid rgb(231, 231, 231);
+    box-sizing: border-box; 
+    display: flex;
+    align-items: center; 
+    justify-content: center;  
+}
+
+.imagens-dentro img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;  /* exibe toda a imagem sem cortar */
+}
+
+
 .produto-direita{
-    max-width: 30%;
+    width: 30%;
     padding-left: 40px;
     width: auto;
     display: flex;
@@ -120,9 +141,8 @@ h1{
   display: flex;
   justify-content: start;
   padding: 90px 0px;
-
+  height: auto;
 }
-
 .especificacao-container {
   width: 90%;
   padding: 10px;
@@ -130,8 +150,6 @@ h1{
 .especificacao-container  h1{
   margin-bottom: 20px;
 }
-
-
 .especificacao {
   display: flex;
   align-items: center;
@@ -144,7 +162,6 @@ h1{
     font-size:1.1rem;
     width: 50%;
 }
-
 .especificacao:nth-child(odd) {
   background-color: #ffffff; /* cor clara */
 }
@@ -152,4 +169,71 @@ h1{
 .especificacao:nth-child(even) {
   background-color: #e0e0e0; /* cor um pouco mais escura */
 }
+#descrição{
+  background: #fafafa;
+  border-radius: 8px;
+  margin: 30px;
+  display: flex;
+  justify-content: start;
+  padding: 90px 0px;
+  height: auto;
+}
+.descricao-container {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 70px;
+}
+@media screen and (max-width: 1080px) {
+  #detalhe-produto {
+  margin: 0px;
 
+}
+#informação{
+
+  margin: 0px;
+
+}
+#descrição{
+
+  margin: 0px;
+
+}
+  .produto-container{
+
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+
+
+}
+  .produto-esquerda{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 0 60px;
+
+}
+.imagens-Extras {
+  display: flex;
+  justify-content: center;
+    flex-direction: row; 
+    width: 100%;
+    align-items: center;
+}
+
+
+.produto-direita{
+    width: 30%;
+    padding-left: 40px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+
+}
+
+}
