@@ -7,7 +7,6 @@
   height: 100%;
 }
 .product {
-  background-color: #195ce2;
   height: auto;
 }
 
@@ -136,4 +135,41 @@ label {
   margin: 0 0 8px 0;
   text-decoration: none;
   list-style: none;
+}
+.remover{
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #fff;
+}
+.remover img{
+  width: 26px;
+  height: 26px;
+}
+.item-carrinho{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.detalhes-prod-carrinho{
+  width: 70%;
+
+}
+.menos-e-mais{
+  border: none;
+  background-color: #f3f1f1;
+}
+
+.ajusta-quantidade{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #61dafb;
+  width: 60px;
+  gap: 10px;
+  background-color: #f3f1f1;
+  border-radius: 2px;
 }
