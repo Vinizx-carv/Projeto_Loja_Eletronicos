@@ -28,7 +28,7 @@ function criarCard(produto) {
       </h2>
       <p>R$ ${produto.preco}</p>
 
-      <button onclick="adicionarAoCarrinho('${produto.id}')">Adicionar ao carrinho</button>
+      <button onclick="adicionarAoCarrinho('${produto.id}')" class="comprar">Adicionar ao carrinho</button>
 
     </div>
   `;
@@ -130,19 +130,19 @@ function atualizarCarrinho() {
     subtotal += preco * item.quantidade;
 
     carrinhoDiv.innerHTML += `
-      <div class="item-carrinho" style="border-bottom: 1px solid #ccc; padding: 10px 0; display: flex; align-items: center;">
-        <img src="${item.imagemPrincipal}" alt="${item.nome}" style="width: 50px; height: 50px; margin-right: 10px;">
-        <div>
+      <div class="item-carrinho" style="border-bottom: 1px solid #ccc; padding: 10px 0; ">
+        <img src="${item.imagemPrincipal}" alt="${item.nome}" style="width: 60px; height: 60px; object-fit: cover; object-fit: contain;">
+        <div class="detalhes-prod-carrinho">
           <p><strong>${item.nome}</strong></p>
           <p>Preço unitário: R$ ${preco.toFixed(2)}</p>
-          <p>Quantidade: ${item.quantidade}</p>
           <p>Total: R$ ${(preco * item.quantidade).toFixed(2)}</p>
-          <div style="margin-top: 5px;">
-            <button onclick="aumentarQuantidade('${item.id}')">+</button>
-            <button onclick="diminuirQuantidade('${item.id}')">-</button>
-            <button onclick="removerItem('${item.id}')">Remover</button>
+          <div class="ajusta-quantidade"style="margin-top: 5px;">
+            <button onclick="diminuirQuantidade('${item.id}')"class="menos-e-mais">-</button>
+                      <p>${item.quantidade}</p>
+            <button onclick="aumentarQuantidade('${item.id}')" class="menos-e-mais">+</button>
           </div>
         </div>
+        <button onclick="removerItem('${item.id}')" class="remover"><img src="../assents/delete.png"  width="30px"; alt=""></button>
       </div>
     `;
   });
