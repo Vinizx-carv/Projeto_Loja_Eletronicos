@@ -405,3 +405,9 @@ button#filtrar {
     transform: translate(-50%,10px)
   }
 }
+
+@media screen and (max-width: 1080px) {
+  #btnLogin p {
+    display:none;
+  }
+}

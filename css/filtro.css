@@ -96,7 +96,7 @@ label {
 .produtos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 25px;
+  gap: 20px;
   padding: 30px;
   width: 100%;
 }
@@ -108,9 +108,10 @@ label {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   transition: transform 0.2s;
   border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-
-
 .card:hover {
   transform: translateY(-5px);
 }
@@ -129,12 +130,21 @@ label {
   font-size: 25px;
   margin: 0 0 8px 0;
 }
+.card p{
+  font-size: 20px;
+}
+.card span{
+  color: #454546;
+}
 
 .card h2 a{
   font-size: 25px;
   margin: 0 0 8px 0;
   text-decoration: none;
   list-style: none;
+  color:#20232a;
+  font-weight: 500;
+  font-size: 22px;
 }
 .remover{
   width: 30px;

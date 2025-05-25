@@ -5,6 +5,7 @@ const id = params.get('id');
 
 const container = document.getElementById('detalhe-produto');
 const infor = document.getElementById('informação');
+const desc = document.getElementById('descrição');
 // Mostra skeleton enquanto carrega
 const skeleton = document.createElement('div');
 skeleton.className = 'skeleton-produto';
@@ -19,10 +20,13 @@ async function carregarProduto() {
     container.innerHTML = `
       <div class="produto-container">
         <div class="produto-esquerda">
-          <div class="imagens-miniaturas">
-            ${produto.imagensSecundarias?.map(img => `
-              <img src="${img}" alt="Miniatura">
-            `).join('') || ''}
+          <div class="imagens-Extras">
+              ${produto.imagensExtras?.map(imagem => `
+                <div class="imagens-dentro">
+              <img src="${imagem}" alt="Miniatura ${produto.nome}">
+                      </div>
+              `).join('') || ''}
+
           </div>
           <div class="imagem-principal">
           <div class="imagem-centro">
@@ -31,9 +35,11 @@ async function carregarProduto() {
           </div>
         </div>
         <div class="produto-direita">
-          <h1> Notebook Samsung Galaxy Book 4, Intel® Core™ i5-1335U, 8GB, 512GB SSD, Tela 15.6" Full HD, Windows 11 + Headphone Bluetooth Goldentec GT Go Rosa ${produto.nome}, ${produto.marca}</h1>
+          <h1>  ${produto.nome}, ${produto.marca},${produto.linha} </h1>
           <p>Por <span class="preco-produto">R$ ${produto.preco}</span> no pix <br> ou 10x de <strong>R$ 339,90</strong></p>
           <button class="comprar">Comprar</button>
+          <button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
+
           <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
         </div>
       </div>
@@ -43,9 +49,36 @@ const especificacoes = [];
 if(produto.marca) especificacoes.push({ nome: 'Marca', valor: produto.marca });
 if(produto.modelo) especificacoes.push({ nome: 'Modelo', valor: produto.modelo });
 if(produto.preco) especificacoes.push({ nome: 'Preço', valor: produto.preco });
-if(produto.compatibilidade) especificacoes.push({ nome: 'Compatibilidade', valor: produto.compatibilidade });
 if(produto.processador) especificacoes.push({ nome: 'Processador', valor: produto.processador });
-// etc.
+if(produto.fabricante) especificacoes.push({ nome: 'Fabricante', valor: produto.fabricante });
+if(produto.linha) especificacoes.push({ nome: 'Linha', valor: produto.linha });
+if(produto.serie) especificacoes.push({ nome: 'Série', valor: produto.serie });
+if(produto.tipo) especificacoes.push({ nome: 'Tipo', valor: produto.tipo });
+if(produto.memoria) especificacoes.push({ nome: 'Tamanho da memória', valor: produto.memoria });
+if(produto.grafica) especificacoes.push({ nome: 'Memória gráfica', valor: produto.grafica });
+if(produto.versao) especificacoes.push({ nome: 'Versão', valor: produto.versao})
+if(produto.cor) especificacoes.push({ nome: 'Cor', valor: produto.cor});
+if(produto.plataforma) especificacoes.push({ nome: 'Plataforma', valor: produto.plataforma});
+if(produto.submodelo) especificacoes.push({ nome: 'Submodelo', valor: produto.submodelo});
+if(produto.edicao) especificacoes.push({ nome: 'Edicao', valor: produto.edicao});
+if(produto.genenos) especificacoes.push({ nome: 'Genero', valor: produto.genero});
+if(produto.titulo) especificacoes.push({ nome: 'Titulo', valor: produto.titulo});
+if(produto.desenvolvedores) especificacoes.push({ nome: 'Desenvolvedores', valor: produto.desenvolvedores});
+if(produto.editoras) especificacoes.push({ nome: 'Editoras', valor: produto.editoras});
+if(produto.ram) especificacoes.push({ nome: 'Memória Ram', valor: produto.ram});
+if(produto.detalhado) especificacoes.push({ nome: 'Modelo detalhado', valor: produto.detalhado});
+if(produto.alfanumero) especificacoes.push({ nome: 'Modelo alfanumero', valor: produto.alfanumero});
+if(produto.nome) especificacoes.push({ nome: 'Nome', valor: produto.nome});
+if(produto.frequencia) especificacoes.push({ nome: 'Frequencia', valor: produto.frequencia});
+if(produto.ssd) especificacoes.push({ nome: 'SSD', valor: produto.ssd});
+if(produto.colecao) especificacoes.push({ nome: 'Coleção', valor: produto.colecao});
+if(produto.classificacao) especificacoes.push({ nome: 'Classificacao', valor: produto.classificacao});
+
+
+
+
+
+
 
 let especificacoesHTML = especificacoes.map(esp => `
   <div class="especificacao">
@@ -58,6 +91,15 @@ infor.innerHTML = `
   <div class="especificacao-container">
     <h1>Especificações</h1>
     ${especificacoesHTML}
+  </div>
+`;
+
+let descricaoHTML = `<p>${produto.descricao || 'Descrição não informada.'}</p>`;
+
+desc.innerHTML = `
+  <div class="descricao-container">
+    <h1>Descrição</h1>
+    ${descricaoHTML}
   </div>
 `;
 
@@ -83,6 +125,18 @@ infor.innerHTML = `
   } catch (error) {
     container.innerHTML = '<p>Erro ao carregar produto.</p>';
   }
-}
 
+  
+    const imagemPrincipal = container.querySelector('.imagem-centro img');
+    const miniaturas = container.querySelectorAll('.imagens-dentro img');
+
+    miniaturas.forEach(miniatura => {
+      miniatura.addEventListener('click', () => {
+        imagemPrincipal.src = miniatura.src;
+        imagemPrincipal.alt = miniatura.alt || 'Imagem principal';
+      });
+    });
+
+}
 carregarProduto();
+
