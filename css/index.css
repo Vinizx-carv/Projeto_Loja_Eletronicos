@@ -17,6 +17,13 @@ header{
     align-items: center;
     padding: 10px 40px;
     background-color: #3c1ee6;
+    height: 10vh;
+}
+.container-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 }
 /*barra de pesquisa no header*/
 #busca{
@@ -28,6 +35,10 @@ header{
   border: none;
   background-color: #e8e4e4;background-color: #ffffff;
   padding: 0 20px;
+}
+  
+#input-oculto{
+  display: none;
 }
 /*login e carrinho*/
 .clicaveis{
@@ -129,6 +140,17 @@ li a{
     cursor: pointer;
     color: #fff;
 }
+.btnLogin-oculto{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    gap: 12px;
+    cursor: pointer;
+    color: #fff;
+}
+
 #loginform{
   display: none;
 }
@@ -187,7 +209,7 @@ section{
     box-sizing: border-box;
     padding: 12px 15px;
 }
-  
+
 .page-link {
     text-decoration: underline;
     margin: 0;
@@ -343,27 +365,36 @@ select {
   margin-top: 5px;
 }
 .tipos-pagamentos{
-  width: 100%;
-  height: 15vh;
   justify-content: space-around;
   align-items: center;
-  display: flex;
   background-color: #efeded;
-  
+  display: flex;             /* Deixa os itens lado a lado */
+  overflow-x: auto;         /* Ativa scroll horizontal quando necessário */
+  white-space: nowrap;      /* Evita quebra de linha */
+  gap: 70px;                /* Espaçamento entre os itens */
+  padding: 10px;
+  height: 12vh;
 }
 .tipos-pagamentos-1{
   display: flex;
-  gap: 2rem;
+  gap: 12px;
 }
 
 .tipos-pagamentos-1 img{
-  width: 100px;
-  object-fit: cover;
-  object-fit: contain;
+  max-width: 70px;
+
 }
-.tipos-pagamentos-1 h1{
-  font-weight: 500;
-  font-size:2rem;
+.tipos-pagamentos-1 h2{
+  font-weight: 600;
+  font-size:1.5em;
+}
+
+
+
+/* Para Firefox */
+.tipos-pagamentos {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.2) transparent;
 }
 button#filtrar {
   width: 100%;
@@ -393,6 +424,7 @@ button#filtrar {
   animation: mensagem 4s forwards;
 
 }
+
 @keyframes mensagem {
   0%{
     opacity: 0;
@@ -407,7 +439,43 @@ button#filtrar {
 }
 
 @media screen and (max-width: 1080px) {
-  #btnLogin p {
-    display:none;
+  #btnLogin{
+    display: none;
   }
+  header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 10px;
+    background-color: #3c1ee6;
+    height: auto;
+
+}
+.container-header{
+  display: flex;
+  align-items: center;
+  width: 96%;
+  align-items: center;
+  justify-content: space-between;
+}
+.btnLogin-oculto{
+  display: flex;
+
+}
+#busca{
+  display: none;
+}
+  
+#input-oculto{
+  display: flex;
+    width: 90%;
+  height: 40px;
+
+  border-radius: 40px;
+  outline: none;
+  border: none;
+  background-color: #e8e4e4;background-color: #ffffff;
+  padding: 0 20px;
+  margin: 10px 0px;
+}
 }
