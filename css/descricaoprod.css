@@ -31,11 +31,12 @@ h1{
 
 }
 .imagem-principal{
-    height: 100%;
+    min-height: 500px;
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 .imagem-centro{
     height: 100%;
@@ -227,6 +228,7 @@ h1{
     width: 100%;
     height: auto;
     margin: 0 60px;
+    gap: 70px;
 
 }
 .imagens-Extras {
