@@ -13,9 +13,25 @@ skeleton.innerHTML = '<div class="skeleton image"></div><div class="skeleton tex
 container.appendChild(skeleton);
 
 async function carregarProduto() {
+
+
+
+
   try {
     const res = await fetch(`${API_URL_PRO}/${id}`);
     const produto = await res.json();
+
+    const valordividido = (produto.preco / 10);
+    const valordivFormatado = valordividido.toLocaleString('pt-BR', { 
+      style: 'currency', 
+      currency: 'BRL' 
+    });
+
+    const precoFormatado = produto.preco.toLocaleString('pt-BR', { 
+      style: 'currency', 
+      currency: 'BRL' 
+    });
+
 
     container.innerHTML = `
       <div class="produto-container">
@@ -60,7 +76,15 @@ async function carregarProduto() {
 
   <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
 </div>
-
+        <div>
+          <h1>  ${produto.nome}, ${produto.marca},${produto.linha} </h1>
+          <p>Por <span class="preco-produto">R$ ${precoFormatado}</span> no pix <br> ou 10x de R$ ${valordivFormatado}</p>
+        </div> 
+        <div class="btn-add-comprar">  
+          <button class="comprar">Comprar</button>
+          <button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
+          <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
+        </div>
       </div>
     `;
 const especificacoes = [];

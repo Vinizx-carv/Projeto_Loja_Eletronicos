@@ -20,6 +20,7 @@ h1{
 
     display: flex;
     width: 90%;
+    gap: 60px;
 
 }
 .produto-esquerda{
@@ -30,11 +31,12 @@ h1{
 
 }
 .imagem-principal{
-    height: 100%;
+    min-height: 500px;
     width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 .imagem-centro{
     height: 100%;
@@ -47,7 +49,6 @@ h1{
 .imagem-centro img{
   width: 100%;
   height: 100%;
-  object-fit: cover;
   object-fit: contain;
   transition: transform 0.3s ease; 
   transform-origin: center center;
@@ -80,18 +81,33 @@ h1{
     height: 100%;
     object-fit: contain;
 }
-
-
 .produto-direita{
-    width: 30%;
-    padding-left: 40px;
-    width: auto;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    width: 40%;
 }
+.btn-add-comprar{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+.comprar{
+  margin-top: 15px;
+}
+.add-carrinho{
+  border: 1px solid #21c512;
+  color: #21c512;
+  width: 100%;
+  height: 5vh;
+  font-weight: 600;
+  font-size: 20px;
+}
+
 .produto-direita h1{
     color: rgb(85, 83, 83);
+    margin-bottom:30px;
 }
 .produto-direita p{
     color: rgb(85, 83, 83);
@@ -107,8 +123,6 @@ h1{
 .vendido-bytestore p{
     font-size: 1px;
 }
-
-
 
 .skeleton-produto .skeleton {
   background: #af6d6d;
@@ -214,6 +228,7 @@ h1{
     width: 100%;
     height: auto;
     margin: 0 60px;
+    gap: 70px;
 
 }
 .imagens-Extras {
@@ -226,14 +241,7 @@ h1{
 
 
 .produto-direita{
-    width: 30%;
-    padding-left: 40px;
-    width: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-
-
+    width: 80%;
 }
 
 }

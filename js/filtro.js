@@ -8,10 +8,14 @@ const marcaContainer = document.getElementById("marca-container");
 const tipoContainer = document.getElementById("tipo-container");
 const produtosDiv = document.getElementById("pro");
 
+
+
 let produtosGlobal = [];
 let carrinho = [];
 
+
 function criarCard(produto) {
+  const valordividido = (produto.preco / 10).toFixed(2);;
   return `
     <div class="card">
       <div class="card-image">
@@ -26,7 +30,7 @@ function criarCard(produto) {
           ${produto.nome}
         </a>
       </h2>
-       <p>Por <span class="preco-produto"> <strong>R$ ${produto.preco} </strong></span> no pix <br> ou 10x de R$ 339,90</p>
+       <p><span class="preco-produto"> <strong>R$ ${produto.preco.toFixed(2)} </strong></span> no pix <br> ou 10x de R$ ${valordividido}</p>
 
 
     </div>
