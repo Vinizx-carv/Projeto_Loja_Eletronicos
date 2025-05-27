@@ -19,12 +19,12 @@
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* preenche a div, dá zoom, mantém estética */
+  object-fit: cover;
 }
 .slide video {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* preenche a div, dá zoom, mantém estética */
+  object-fit: cover;
 }
 
 

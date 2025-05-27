@@ -43,7 +43,7 @@ header{
 #input-oculto{
   display: none;
 }
-/*login e carrinho*/
+
 .clicaveis{
   display: flex;
   align-items: center;
@@ -299,8 +299,8 @@ section{
   width: 100%;
   height: 100%;
   backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.3); /* opcional: escurece levemente */
-  z-index: 1000; /* abaixo do modal */
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
 }
 section:has(#blurOverlay[style*="display: none"]) {
     display: none;

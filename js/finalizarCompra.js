@@ -6,9 +6,7 @@ document.getElementById("finalizar-compra").addEventListener("click", () => {
     return;
   }
 
-  // Salva os produtos no localStorage para avaliação posterior
   localStorage.setItem("produtosParaAvaliar", JSON.stringify(carrinho));
 
-  // Redireciona para a página de avaliação (sem passar id no parâmetro)
   window.location.href = "avaliacao.html";
 });
