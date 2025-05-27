@@ -1,6 +1,49 @@
 import { API_URL_PRO } from './config.js';
 
-console.log(API_URL_PRO); 
+const carrinho = [];
+
+async function adicionarAoCarrinho(produtoId) {
+  try {
+    const res = await fetch(`${API_URL_PRO}/${produtoId}`);
+    const produto = await res.json();
+
+    const itemExistente = carrinho.find(item => item.id === produto.id);
+    if (itemExistente) {
+      itemExistente.quantidade++;
+    } else {
+      carrinho.push({ ...produto, quantidade: 1 });
+    }
+
+    atualizarCarrinhoVisual();
+  } catch (error) {
+    console.error('Erro ao adicionar ao carrinho:', error);
+  }
+}
+
+function atualizarCarrinhoVisual() {
+  const itensCarrinho = document.getElementById("itens-carrinho");
+  const totalCarrinho = document.getElementById("total-carrinho");
+
+  itensCarrinho.innerHTML = ""; // limpa antes de atualizar
+
+  let total = 0;
+
+  carrinho.forEach(item => {
+    const subtotal = item.preco * item.quantidade;
+    total += subtotal;
+
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("item-carrinho");
+    itemDiv.innerHTML = `
+      <p>${item.nome} x${item.quantidade} - R$ ${subtotal.toFixed(2)}</p>
+    `;
+    itensCarrinho.appendChild(itemDiv);
+  });
+
+  totalCarrinho.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
+
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -8,11 +51,8 @@ const id = params.get('id');
 const container = document.getElementById('detalhe-produto');
 const infor = document.getElementById('informação');
 const desc = document.getElementById('descrição');
-// Mostra skeleton enquanto carrega
-const skeleton = document.createElement('div');
-skeleton.className = 'skeleton-produto';
-skeleton.innerHTML = '<div class="skeleton image"></div><div class="skeleton text"></div>';
-container.appendChild(skeleton);
+
+
 
 async function carregarProduto() {
 
@@ -64,8 +104,10 @@ async function carregarProduto() {
         </div>
       </div>
     `;
-const botaoCarrinho = container.querySelector('.add-carrinho');
-botaoCarrinho.addEventListener('click', () => adicionarAoCarrinho(produto.id));
+
+
+
+    
     
 const especificacoes = [];
 
@@ -161,13 +203,6 @@ desc.innerHTML = `
     });
 
 }
-
-
-
-
-
-
-
 
 
 

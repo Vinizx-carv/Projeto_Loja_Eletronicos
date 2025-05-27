@@ -33,9 +33,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 document.getElementById('btnLogin').addEventListener('click', function() {
     document.getElementById('loginForm').style.display = 'flex';
   });
-  document.getElementById('btnLogin-oculto').addEventListener('click', function() {
-    document.getElementById('loginForm').style.display = 'flex';
-  });
+
   
   document.getElementById('closeModal').addEventListener('click', function() {
     document.getElementById('loginForm').style.display = 'none';
@@ -55,21 +53,11 @@ document.getElementById('btnLogin').addEventListener('click', function() {
   });
 
 
-  window.addEventListener("load", function () {
-    const preloader = document.getElementById("preloader");
-    preloader.style.display = "none";
-  });
-  
-
-
-
-
-  //temporario procura forma melhor de fazer
   document.getElementById('btnLogin').addEventListener('click', function () {
     document.getElementById('loginForm').style.display = 'flex';
     document.getElementById('blurOverlay').style.display = 'block';
 });
-//esse tambem
+
 document.getElementById('closeModal').addEventListener('click', function () {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('blurOverlay').style.display = 'none';
