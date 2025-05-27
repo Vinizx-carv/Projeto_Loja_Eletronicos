@@ -55,7 +55,6 @@ async function carregarProduto() {
       </div>
     `;
 
-    // Botão funcional
     document.querySelector(".add-carrinho").addEventListener("click", () => {
       adicionarAoCarrinho(produto);
     });

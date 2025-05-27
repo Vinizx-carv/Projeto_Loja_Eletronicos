@@ -7,7 +7,6 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
   const senha = document.getElementById('senha-regis').value;
 
   try {
-    // Busca todos os usuários e verifica se o e-mail já existe
     const res = await fetch(API_URL);
     const data = await res.json();
     const jaExiste = data.some(u => u.email === email);
@@ -17,7 +16,6 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
       return;
     }
 
-    // Cadastra o novo usuário
     const response = await fetch(API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

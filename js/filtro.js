@@ -1,8 +1,5 @@
 import { API_URL_PRO } from './config.js';
 
-
-
-// Elementos da DOM
 const precoRange = document.getElementById("preco");
 const precoValor = document.getElementById("preco-valor");
 const marcaContainer = document.getElementById("marca-container");

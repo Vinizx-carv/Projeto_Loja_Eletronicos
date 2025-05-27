@@ -1,8 +1,5 @@
-
-// URL da API
 const API_URL_PRO = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos';
 
-// Elementos da DOM
 const precoRange = document.getElementById("preco");
 const precoValor = document.getElementById("preco-valor");
 const marcaContainer = document.getElementById("marca-container");

@@ -19,7 +19,6 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     
     if (usuario.senha === senha) {
       mostrarMensagem(`Bem-vindo, ${usuario.nome}!`);
-      // Aqui você pode redirecionar, ex: window.location.href = "produtos.html";
     } else { 
       mostrarMensagem('Senha incorreta!');
 

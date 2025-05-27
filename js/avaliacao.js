@@ -7,7 +7,6 @@ async function atualizarAvaliacao(produtoId) {
 
     const produto = await resposta.json();
 
-    // Calcula a média de estrelas
     const media = produto.avaliacoes ? produto.estrelas / produto.avaliacoes : 0;
     const total = produto.avaliacoes || 0;
 
@@ -27,11 +26,11 @@ function gerarEstrelas(media) {
   let html = '';
   for (let i = 1; i <= 5; i++) {
     if (media >= i) {
-      html += '★';    // estrela cheia
+      html += '★';    
     } else if (media >= i - 0.5) {
-      html += '☆';    // pode trocar por meia estrela se quiser
+      html += '☆';    
     } else {
-      html += '☆';    // estrela vazia
+      html += '☆';    
     }
   }
   return html;

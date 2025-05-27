@@ -10,7 +10,7 @@
 .footer-container {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap; /* permite quebra de linha */
+  flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -21,7 +21,7 @@
   margin: 15px;
   min-width: 250px;
   box-sizing: border-box;
-  flex: 1 1 250px; /* flex-grow, flex-shrink, flex-basis */
+  flex: 1 1 250px;
 }
 .footer-section ul li a{
   color: rgb(84, 84, 185);

@@ -6,11 +6,11 @@ document.getElementById("reset-password-form").addEventListener("submit", async 
     const novaSenha = document.getElementById("new-password").value;
 
     try {
-        // Buscar todos os usuários
+        
         const res = await fetch(API_URL);
         const usuarios = await res.json();
 
-        // Procurar o usuário pelo nome e email
+        
         const usuario = usuarios.find(user => user.nome === nome && user.email === email);
 
         if (!usuario) {
@@ -18,9 +18,9 @@ document.getElementById("reset-password-form").addEventListener("submit", async 
             return;
         }
 
-        // Atualizar a senha
+        
         const updateRes = await fetch(`${API_URL}/${usuario.id}`, {
-            method: 'PUT', // ou 'PATCH'
+            method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ ...usuario, senha: novaSenha })
         });
