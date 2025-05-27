@@ -223,7 +223,4 @@ desc.innerHTML = `
 
 
 
-
-
-
 carregarProduto();
