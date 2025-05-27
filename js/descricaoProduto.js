@@ -164,31 +164,4 @@ desc.innerHTML = `
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 carregarProduto();

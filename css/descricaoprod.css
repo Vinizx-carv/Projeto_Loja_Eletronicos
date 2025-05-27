@@ -51,7 +51,9 @@ h1{
   height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease; 
-  transform-origin: center center; 
+
+  transform-origin: center center;
+
   cursor: zoom-in;
 }
 .imagem-principal img:hover {
@@ -79,7 +81,10 @@ h1{
 .imagens-dentro img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;  
+
+
 }
 .produto-direita{
     display: flex;
@@ -149,7 +154,7 @@ h1{
   display: flex;
   align-items: center;
   position: relative;
-  min-height: 40px; /* ou o tamanho que quiser */
+  min-height: 40px;
   padding: 10px;
   border-radius: 2px;
 }
@@ -160,7 +165,7 @@ h1{
 
 
 .especificacao:nth-child(even) {
-  background-color: #e0e0e0; /* cor um pouco mais escura */
+  background-color: #e0e0e0;
 }
 #descrição{
   background: #fafafa;
