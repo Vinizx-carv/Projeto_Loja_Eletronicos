@@ -1,6 +1,49 @@
 import { API_URL_PRO } from './config.js';
 
-console.log(API_URL_PRO); 
+const carrinho = [];
+
+async function adicionarAoCarrinho(produtoId) {
+  try {
+    const res = await fetch(`${API_URL_PRO}/${produtoId}`);
+    const produto = await res.json();
+
+    const itemExistente = carrinho.find(item => item.id === produto.id);
+    if (itemExistente) {
+      itemExistente.quantidade++;
+    } else {
+      carrinho.push({ ...produto, quantidade: 1 });
+    }
+
+    atualizarCarrinhoVisual();
+  } catch (error) {
+    console.error('Erro ao adicionar ao carrinho:', error);
+  }
+}
+
+function atualizarCarrinhoVisual() {
+  const itensCarrinho = document.getElementById("itens-carrinho");
+  const totalCarrinho = document.getElementById("total-carrinho");
+
+  itensCarrinho.innerHTML = ""; // limpa antes de atualizar
+
+  let total = 0;
+
+  carrinho.forEach(item => {
+    const subtotal = item.preco * item.quantidade;
+    total += subtotal;
+
+    const itemDiv = document.createElement("div");
+    itemDiv.classList.add("item-carrinho");
+    itemDiv.innerHTML = `
+      <p>${item.nome} x${item.quantidade} - R$ ${subtotal.toFixed(2)}</p>
+    `;
+    itensCarrinho.appendChild(itemDiv);
+  });
+
+  totalCarrinho.textContent = `Total: R$ ${total.toFixed(2)}`;
+}
+
+
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -8,11 +51,8 @@ const id = params.get('id');
 const container = document.getElementById('detalhe-produto');
 const infor = document.getElementById('informação');
 const desc = document.getElementById('descrição');
-// Mostra skeleton enquanto carrega
-const skeleton = document.createElement('div');
-skeleton.className = 'skeleton-produto';
-skeleton.innerHTML = '<div class="skeleton image"></div><div class="skeleton text"></div>';
-container.appendChild(skeleton);
+
+
 
 async function carregarProduto() {
 
@@ -35,37 +75,44 @@ async function carregarProduto() {
     });
 
 
-    container.innerHTML = `
-      <div class="produto-container">
-        <div class="produto-esquerda">
-          <div class="imagens-Extras">
-              ${produto.imagensExtras?.map(imagem => `
-                <div class="imagens-dentro">
-              <img src="${imagem}" alt="Miniatura ${produto.nome}">
-                      </div>
-              `).join('') || ''}
-
+    // Monta o HTML do produto
+container.innerHTML = `
+  <div class="produto-container">
+    <div class="produto-esquerda">
+      <div class="imagens-Extras">
+        ${produto.imagensExtras?.map(imagem => `
+          <div class="imagens-dentro">
+            <img src="${imagem}" alt="Miniatura ${produto.nome}">
           </div>
-          <div class="imagem-principal">
-          <div class="imagem-centro">
-            <img src="${produto.imagemPrincipal}" alt="${produto.nome}">
-          </div>
-          </div>
-        </div>
-        <div class="produto-direita">
-        <div>
-          <h1>  ${produto.nome}, ${produto.marca},${produto.linha} </h1>
-          <p>Por <span class="preco-produto">R$ ${precoFormatado}</span> no pix <br> ou 10x de R$ ${valordivFormatado}</p>
-        </div> 
-        <div class="btn-add-comprar">  
-          <button class="comprar">Comprar</button>
-<button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
-          <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
+        `).join('') || ''}
+      </div>
+      <div class="imagem-principal">
+        <div class="imagem-centro">
+          <img src="${produto.imagemPrincipal}" alt="${produto.nome}">
         </div>
       </div>
-    `;
-const botaoCarrinho = container.querySelector('.add-carrinho');
-botaoCarrinho.addEventListener('click', () => adicionarAoCarrinho(produto.id));
+    </div>
+    <div class="produto-direita">
+      <div>
+        <h1>${produto.nome}, ${produto.marca}, ${produto.linha}</h1>
+        <div id="avaliacao-produto" data-produto-id="${produto.id}"></div>
+        <p>Por <span class="preco-produto">R$ ${precoFormatado}</span> no pix<br>ou 10x de R$ ${valordivFormatado}</p>
+      </div>
+      <div class="btn-add-comprar">
+          <button class="comprar" onclick="window.location.href='avaliacao.html?id=${produto.id}'">Comprar</button>
+        <button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
+        <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
+      </div>
+    </div>
+  </div>
+`;
+
+atualizarAvaliacao(produto.id);
+
+
+
+
+    
     
 const especificacoes = [];
 
@@ -161,6 +208,23 @@ desc.innerHTML = `
     });
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

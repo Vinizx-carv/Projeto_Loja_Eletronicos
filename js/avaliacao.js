@@ -1,25 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const radios = document.querySelectorAll('#avaliacao input[type="radio"]');
-  const mensagem = document.getElementById("mensagem");
+async function atualizarAvaliacao(produtoId) {
+  const avaliacaoEl = document.getElementById("avaliacao-produto");
 
-  radios.forEach(radio => {
-    radio.addEventListener("change", () => {
-      const nota = parseInt(radio.value);
+  try {
+    const resposta = await fetch(`https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos/${produtoId}`);
+    if (!resposta.ok) throw new Error("Erro ao buscar avaliação");
 
-      fetch("https://6816fbb426a599ae7c39065c.mockapi.io/v1/avaliacoes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nota })
-      })
-      .then(res => res.json())
-      .then(() => {
-        mensagem.textContent = "Obrigado pela sua avaliação!";
-        mensagem.style.color = "green";
-      })
-      .catch(() => {
-        mensagem.textContent = "Erro ao enviar sua avaliação.";
-        mensagem.style.color = "red";
-      });
-    });
-  });
-});
+    const produto = await resposta.json();
+
+    // Calcula a média de estrelas
+    const media = produto.avaliacoes ? produto.estrelas / produto.avaliacoes : 0;
+    const total = produto.avaliacoes || 0;
+
+    avaliacaoEl.innerHTML = `
+      <div class="estrelas">
+        ${gerarEstrelas(media)}
+        <span class="avaliadores">(${total} avaliações)</span>
+      </div>
+    `;
+  } catch (error) {
+    avaliacaoEl.innerHTML = '<p style="color:red;">Erro ao carregar avaliações.</p>';
+    console.error(error);
+  }
+}
+
+function gerarEstrelas(media) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    if (media >= i) {
+      html += '★';    // estrela cheia
+    } else if (media >= i - 0.5) {
+      html += '☆';    // pode trocar por meia estrela se quiser
+    } else {
+      html += '☆';    // estrela vazia
+    }
+  }
+  return html;
+}

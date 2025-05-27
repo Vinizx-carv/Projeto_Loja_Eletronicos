@@ -1,4 +1,4 @@
-
+const API_URL = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/usuarios';
 
 document.getElementById('loginForm').addEventListener('submit', async function (e) {
   e.preventDefault();
@@ -31,9 +31,6 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 });
 
 document.getElementById('btnLogin').addEventListener('click', function() {
-    document.getElementById('loginForm').style.display = 'flex';
-  });
-  document.getElementById('btnLogin-oculto').addEventListener('click', function() {
     document.getElementById('loginForm').style.display = 'flex';
   });
   

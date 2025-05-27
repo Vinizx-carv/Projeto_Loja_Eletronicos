@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avaliar Produto</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 2rem;
+    }
+    .estrelas span {
+      font-size: 2rem;
+      cursor: pointer;
+      color: #ccc;
+    }
+    .estrelas span.selecionada {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="tituloProduto">Avaliar Produto</h1>
+
+  <div class="estrelas" id="estrelasContainer">
+    <span data-valor="1">★</span>
+    <span data-valor="2">★</span>
+    <span data-valor="3">★</span>
+    <span data-valor="4">★</span>
+    <span data-valor="5">★</span>
+  </div>
+
+  <button id="btnAvaliar" class="comprar">Enviar Avaliação</button>
+
+  <p id="mensagem"></p>
+
+  <script>
+    const API_URL = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos';
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const produtoId = urlParams.get('id');
+    let notaSelecionada = 0;
+    let produtoAtual = null;
+
+    async function carregarProduto() {
+      if (!produtoId) {
+        document.getElementById('mensagem').textContent = 'ID do produto não informado.';
+        return;
+      }
+
+      try {
+        const res = await fetch(`${API_URL}/${produtoId}`);
+        const produto = await res.json();
+        produtoAtual = produto;
+        document.getElementById('tituloProduto').textContent = `Avaliar: ${produto.nome}`;
+      } catch (error) {
+        document.getElementById('mensagem').textContent = 'Erro ao carregar o produto.';
+      }
+    }
+
+    // Gerenciar clique nas estrelas
+    document.querySelectorAll('#estrelasContainer span').forEach(span => {
+      span.addEventListener('click', () => {
+        notaSelecionada = parseInt(span.dataset.valor);
+        document.querySelectorAll('#estrelasContainer span').forEach(s => {
+          s.classList.toggle('selecionada', parseInt(s.dataset.valor) <= notaSelecionada);
+        });
+      });
+    });
+
+    // Enviar avaliação
+    document.getElementById('btnAvaliar').addEventListener('click', async () => {
+      if (!notaSelecionada || !produtoAtual) {
+        document.getElementById('mensagem').textContent = 'Por favor, selecione uma nota.';
+        return;
+      }
+
+      const novoTotalEstrelas = produtoAtual.estrelas + notaSelecionada;
+      const novoTotalAvaliacoes = produtoAtual.avaliacoes + 1;
+
+      try {
+        await fetch(`${API_URL}/${produtoId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            estrelas: novoTotalEstrelas,
+            avaliacoes: novoTotalAvaliacoes
+          })
+        });
+
+        document.getElementById('mensagem').textContent = 'Obrigado pela sua avaliação!';
+      } catch (error) {
+        document.getElementById('mensagem').textContent = 'Erro ao enviar avaliação.';
+      }
+    });
+
+    carregarProduto();
+  </script>
+</body>
+</html>

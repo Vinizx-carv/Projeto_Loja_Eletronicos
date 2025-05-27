@@ -1,3 +1,4 @@
+
 // URL da API
 const API_URL_PRO = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos';
 
@@ -10,6 +11,19 @@ const produtosDiv = document.getElementById("pro");
 
 let produtosGlobal = [];
 let carrinho = [];
+
+
+function mostrarMensagem(texto) {
+  const div = document.createElement('div');
+  div.className = 'mensagem';
+  div.innerHTML = `<p>${texto}</p>`;
+  document.body.appendChild(div);
+
+  setTimeout(() => {
+    div.remove();
+  }, 4000);
+}
+
 
 function criarCard(produto) {
   const valordividido = (produto.preco / 10).toFixed(2);
@@ -57,6 +71,7 @@ function preencherFiltros(produtos) {
     precoValor.textContent = precoRange.value;
   });
 
+
   marcaContainer.innerHTML = "";
   marcas.forEach(m => {
     marcaContainer.innerHTML += `
@@ -66,6 +81,8 @@ function preencherFiltros(produtos) {
       </div>`;
   });
 
+
+
   tipoContainer.innerHTML = "";
   tipos.forEach(t => {
     tipoContainer.innerHTML += `
@@ -74,6 +91,7 @@ function preencherFiltros(produtos) {
         <label for="tipo-${t}">${t}</label>
       </div>`;
   });
+
 }
 
 function exibirProdutos(produtos) {
@@ -171,7 +189,6 @@ function removerItem(id) {
 
 carregarProdutos();
 
-// === FUNÇÃO DA BARRA DE BUSCA DIRETAMENTE NO index.js ===
 document.getElementById("busca").addEventListener("input", function () {
   const termo = this.value.trim().toLowerCase();
   const precoMax = parseFloat(document.getElementById("preco").value);
