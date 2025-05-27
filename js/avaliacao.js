@@ -1,34 +1,38 @@
-// avaliacao.js
+async function atualizarAvaliacao(produtoId) {
+  const avaliacaoEl = document.getElementById("avaliacao-produto");
 
-function criarEstrelas(containerId) {
-  const container = document.getElementById(containerId);
-  let notaSelecionada = 0;
+  try {
+    const resposta = await fetch(`https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos/${produtoId}`);
+    if (!resposta.ok) throw new Error("Erro ao buscar avaliação");
 
-  // Função que pinta as estrelas até o índice selecionado
-  function pintarEstrelas(ate) {
-    for (let i = 1; i <= 5; i++) {
-      const star = container.querySelector(`#star-${i}`);
-      if (i <= ate) {
-        star.classList.add('filled');
-      } else {
-        star.classList.remove('filled');
-      }
-    }
-  }
+    const produto = await resposta.json();
 
-  // Cria as 5 estrelas
-  for (let i = 1; i <= 5; i++) {
-    const star = document.createElement('span');
-    star.classList.add('star');
-    star.id = `star-${i}`;
-    star.innerHTML = '★'; // Estrela Unicode cheia
-    star.addEventListener('click', () => {
-      notaSelecionada = i;
-      pintarEstrelas(i);
-      console.log(`Você selecionou ${notaSelecionada} estrelas`);
-    });
-    container.appendChild(star);
+    // Calcula a média de estrelas
+    const media = produto.avaliacoes ? produto.estrelas / produto.avaliacoes : 0;
+    const total = produto.avaliacoes || 0;
+
+    avaliacaoEl.innerHTML = `
+      <div class="estrelas">
+        ${gerarEstrelas(media)}
+        <span class="avaliadores">(${total} avaliações)</span>
+      </div>
+    `;
+  } catch (error) {
+    avaliacaoEl.innerHTML = '<p style="color:red;">Erro ao carregar avaliações.</p>';
+    console.error(error);
   }
 }
 
-window.criarEstrelas = criarEstrelas; // Exporta a função para usar no outro JS
+function gerarEstrelas(media) {
+  let html = '';
+  for (let i = 1; i <= 5; i++) {
+    if (media >= i) {
+      html += '★';    // estrela cheia
+    } else if (media >= i - 0.5) {
+      html += '☆';    // pode trocar por meia estrela se quiser
+    } else {
+      html += '☆';    // estrela vazia
+    }
+  }
+  return html;
+}

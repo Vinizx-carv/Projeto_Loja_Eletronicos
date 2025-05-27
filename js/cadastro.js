@@ -26,7 +26,7 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
 
     if (response.ok) {
       mostrarMensagem('Usuário cadastrado com sucesso!');
-      window.location.href = 'index.html';
+      
     } else {
       mostrarMensagem('Erro ao cadastrar. Tente novamente.');
     }
@@ -37,18 +37,4 @@ document.getElementById('cadastroForm').addEventListener('submit', async functio
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-document.getElementById('closeModal2').addEventListener('click', function () {
-  document.getElementById('loginForm').style.display = 'none';
-  document.getElementById('blurOverlay').style.display = 'none';
-});
 

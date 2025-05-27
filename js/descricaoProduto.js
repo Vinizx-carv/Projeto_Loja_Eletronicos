@@ -75,36 +75,40 @@ async function carregarProduto() {
     });
 
 
-    container.innerHTML = `
-      <div class="produto-container">
-        <div class="produto-esquerda">
-          <div class="imagens-Extras">
-              ${produto.imagensExtras?.map(imagem => `
-                <div class="imagens-dentro">
-              <img src="${imagem}" alt="Miniatura ${produto.nome}">
-                      </div>
-              `).join('') || ''}
-
+    // Monta o HTML do produto
+container.innerHTML = `
+  <div class="produto-container">
+    <div class="produto-esquerda">
+      <div class="imagens-Extras">
+        ${produto.imagensExtras?.map(imagem => `
+          <div class="imagens-dentro">
+            <img src="${imagem}" alt="Miniatura ${produto.nome}">
           </div>
-          <div class="imagem-principal">
-          <div class="imagem-centro">
-            <img src="${produto.imagemPrincipal}" alt="${produto.nome}">
-          </div>
-          </div>
-        </div>
-        <div class="produto-direita">
-        <div>
-          <h1>  ${produto.nome}, ${produto.marca},${produto.linha} </h1>
-            <div id="avaliacao-container" class="stars">
-          <p>Por <span class="preco-produto">R$ ${precoFormatado}</span> no pix <br> ou 10x de R$ ${valordivFormatado}</p>
-        </div> 
-        <div class="btn-add-comprar">  
-          <button class="comprar">Comprar</button>
-<button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
-          <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
+        `).join('') || ''}
+      </div>
+      <div class="imagem-principal">
+        <div class="imagem-centro">
+          <img src="${produto.imagemPrincipal}" alt="${produto.nome}">
         </div>
       </div>
-    `;
+    </div>
+    <div class="produto-direita">
+      <div>
+        <h1>${produto.nome}, ${produto.marca}, ${produto.linha}</h1>
+        <div id="avaliacao-produto" data-produto-id="${produto.id}"></div>
+        <p>Por <span class="preco-produto">R$ ${precoFormatado}</span> no pix<br>ou 10x de R$ ${valordivFormatado}</p>
+      </div>
+      <div class="btn-add-comprar">
+          <button class="comprar" onclick="window.location.href='avaliacao.html?id=${produto.id}'">Comprar</button>
+        <button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
+        <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
+      </div>
+    </div>
+  </div>
+`;
+
+atualizarAvaliacao(produto.id);
+
 
 
 
