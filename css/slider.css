@@ -1,7 +1,7 @@
 .slider {
   position: relative;
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   overflow: hidden;
   border: 3px solid #ccc;
 }
@@ -21,6 +21,12 @@
   height: 100%;
   object-fit: cover;  /* preenche a div, dá zoom, mantém estética */
 }
+.slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* preenche a div, dá zoom, mantém estética */
+}
+
 
 
     .prev, .next {
