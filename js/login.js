@@ -1,4 +1,4 @@
-
+const API_URL = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/usuarios';
 
 document.getElementById('loginForm').addEventListener('submit', async function (e) {
   e.preventDefault();
@@ -33,7 +33,6 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 document.getElementById('btnLogin').addEventListener('click', function() {
     document.getElementById('loginForm').style.display = 'flex';
   });
-
   
   document.getElementById('closeModal').addEventListener('click', function() {
     document.getElementById('loginForm').style.display = 'none';
@@ -53,11 +52,21 @@ document.getElementById('btnLogin').addEventListener('click', function() {
   });
 
 
+  window.addEventListener("load", function () {
+    const preloader = document.getElementById("preloader");
+    preloader.style.display = "none";
+  });
+  
+
+
+
+
+  //temporario procura forma melhor de fazer
   document.getElementById('btnLogin').addEventListener('click', function () {
     document.getElementById('loginForm').style.display = 'flex';
     document.getElementById('blurOverlay').style.display = 'block';
 });
-
+//esse tambem
 document.getElementById('closeModal').addEventListener('click', function () {
     document.getElementById('loginForm').style.display = 'none';
     document.getElementById('blurOverlay').style.display = 'none';

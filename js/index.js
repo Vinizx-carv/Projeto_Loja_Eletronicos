@@ -12,6 +12,19 @@ const produtosDiv = document.getElementById("pro");
 let produtosGlobal = [];
 let carrinho = [];
 
+
+function mostrarMensagem(texto) {
+  const div = document.createElement('div');
+  div.className = 'mensagem';
+  div.innerHTML = `<p>${texto}</p>`;
+  document.body.appendChild(div);
+
+  setTimeout(() => {
+    div.remove();
+  }, 4000);
+}
+
+
 function criarCard(produto) {
   const valordividido = (produto.preco / 10).toFixed(2);
   return `
@@ -69,15 +82,6 @@ function preencherFiltros(produtos) {
   });
 
 
-function mostrarMensagem(texto) {
-  const div = document.createElement('div');
-  div.className = 'mensagem';
-  div.innerHTML = `<p>${texto}</p>`;
-  document.body.appendChild(div);
-
-  setTimeout(() => {
-    div.remove();
-  }, 4000); 
 
   tipoContainer.innerHTML = "";
   tipos.forEach(t => {
@@ -201,4 +205,3 @@ document.getElementById("busca").addEventListener("input", function () {
 
   exibirProdutos(filtrados);
 });
-}
