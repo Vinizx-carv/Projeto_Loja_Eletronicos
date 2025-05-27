@@ -39,7 +39,7 @@ h1{
 .imagem-centro{
     height: 100%;
     width: 600px;
-    overflow: hidden; /* Esconde partes que saem da div */
+    overflow: hidden;
     display: inline-block;
     justify-content: center;
     align-items: center;
@@ -50,7 +50,7 @@ h1{
   object-fit: cover;
   object-fit: contain;
   transition: transform 0.3s ease; 
-  transform-origin: center center; /* suaviza o zoom */
+  transform-origin: center center;
   cursor: zoom-in;
 }
 .imagem-principal img:hover {
@@ -59,7 +59,7 @@ h1{
 
 .imagens-Extras {
     display: flex;
-    flex-direction: column; /* ou row/grid, depende do seu layout */
+    flex-direction: column;
     gap: 12px; 
     padding: 4px;
 }
@@ -78,7 +78,7 @@ h1{
 .imagens-dentro img {
     width: 100%;
     height: 100%;
-    object-fit: contain;  /* exibe toda a imagem sem cortar */
+    object-fit: contain;
 }
 
 
@@ -154,7 +154,7 @@ h1{
   display: flex;
   align-items: center;
   position: relative;
-  min-height: 40px; /* ou o tamanho que quiser */
+  min-height: 40px;
   padding: 10px;
   border-radius: 2px;
 }
@@ -163,11 +163,11 @@ h1{
     width: 50%;
 }
 .especificacao:nth-child(odd) {
-  background-color: #ffffff; /* cor clara */
+  background-color: #ffffff;
 }
 
 .especificacao:nth-child(even) {
-  background-color: #e0e0e0; /* cor um pouco mais escura */
+  background-color: #e0e0e0;
 }
 #descrição{
   background: #fafafa;

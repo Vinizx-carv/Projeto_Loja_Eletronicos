@@ -35,13 +35,32 @@ async function carregarProduto() {
           </div>
         </div>
         <div class="produto-direita">
-          <h1>  ${produto.nome}, ${produto.marca},${produto.linha} </h1>
-          <p>Por <span class="preco-produto">R$ ${produto.preco}</span> no pix <br> ou 10x de <strong>R$ 339,90</strong></p>
-          <button class="comprar">Comprar</button>
-          <button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
+  <h1>${produto.nome}, ${produto.marca}, ${produto.linha}</h1>
 
-          <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
-        </div>
+  <!-- Avaliação por Estrelas -->
+  <div class="container-avaliacao">
+    <div class="rating" id="avaliacao">
+      <input value="5" name="rating" id="star5" type="radio">
+      <label for="star5"></label>
+      <input value="4" name="rating" id="star4" type="radio">
+      <label for="star4"></label>
+      <input value="3" name="rating" id="star3" type="radio">
+      <label for="star3"></label>
+      <input value="2" name="rating" id="star2" type="radio">
+      <label for="star2"></label>
+      <input value="1" name="rating" id="star1" type="radio">
+      <label for="star1"></label>
+    </div>
+    <p id="mensagem"></p>
+  </div>
+
+  <p>Por <span class="preco-produto">R$ ${produto.preco}</span> no pix <br> ou 10x de <strong>R$ 339,90</strong></p>
+  <button class="comprar">Comprar</button>
+  <button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
+
+  <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
+</div>
+
       </div>
     `;
 const especificacoes = [];
@@ -139,4 +158,6 @@ desc.innerHTML = `
 
 }
 carregarProduto();
+
+
 
