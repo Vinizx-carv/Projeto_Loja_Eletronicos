@@ -49,7 +49,10 @@ document.getElementById('btnLogin').addEventListener('click', function() {
   
   document.getElementById('closeModal2').addEventListener('click', function() {
     document.getElementById('cadastroForm').style.display = 'none';
+    document.getElementById('blurOverlay').style.display = 'none';
   });
+
+
 
 
   window.addEventListener("load", function () {
@@ -61,7 +64,7 @@ document.getElementById('btnLogin').addEventListener('click', function() {
 
 
 
-  //temporario procura forma melhor de fazer
+  //temporario, procurar forma melhor de fazer mais tarde
   document.getElementById('btnLogin').addEventListener('click', function () {
     document.getElementById('loginForm').style.display = 'flex';
     document.getElementById('blurOverlay').style.display = 'block';
