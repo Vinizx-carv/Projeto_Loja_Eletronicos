@@ -135,6 +135,7 @@ header{
   color: #fff;
   font-weight: 600;
   font-size: 20px;
+  cursor: pointer;
 }
 a::after{
   content: "";

@@ -149,9 +149,7 @@ function atualizarCarrinho() {
           <p>Preço unitário: R$ ${preco.toFixed(2)}</p>
           <p>Total: R$ ${(preco * item.quantidade).toFixed(2)}</p>
           <div class="ajusta-quantidade" style="margin-top: 5px;">
-            <button onclick="diminuirQuantidade('${item.id}')" class="menos-e-mais">-</button>
             <p>${item.quantidade}</p>
-            <button onclick="aumentarQuantidade('${item.id}')" class="menos-e-mais">+</button>
           </div>
         </div>
         <button onclick="removerItem('${item.id}')" class="remover"><img src="../assents/delete.png" width="30px" alt=""></button>
@@ -161,25 +159,6 @@ function atualizarCarrinho() {
 
   document.querySelector(".carrinho-subtotal p").textContent = `R$ ${subtotal.toFixed(2)}`;
   document.querySelector(".carrinho-total p").textContent = `R$ ${subtotal.toFixed(2)}`;
-}
-
-function aumentarQuantidade(id) {
-  const item = carrinho.find(p => p.id === id);
-  if (item) {
-    item.quantidade++;
-    atualizarCarrinho();
-  }
-}
-
-function diminuirQuantidade(id) {
-  const item = carrinho.find(p => p.id === id);
-  if (item) {
-    item.quantidade--;
-    if (item.quantidade <= 0) {
-      carrinho = carrinho.filter(p => p.id !== id);
-    }
-    atualizarCarrinho();
-  }
 }
 
 function removerItem(id) {
