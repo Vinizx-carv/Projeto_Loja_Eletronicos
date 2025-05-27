@@ -95,6 +95,7 @@ async function carregarProduto() {
         <div class="produto-direita">
         <div>
           <h1>  ${produto.nome}, ${produto.marca},${produto.linha} </h1>
+            <div id="avaliacao-container" class="stars">
           <p>Por <span class="preco-produto">R$ ${precoFormatado}</span> no pix <br> ou 10x de R$ ${valordivFormatado}</p>
         </div> 
         <div class="btn-add-comprar">  
