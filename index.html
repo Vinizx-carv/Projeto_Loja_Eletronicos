@@ -12,9 +12,7 @@
 </head>
 
 <body>
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
+
 
     <header>
         <div class="container-header">
@@ -30,9 +28,12 @@
                 <p><strong>Entre ou Cadastre-se</strong><br>Para ver ser pedidos</p>
             </button>
 
-            <div id="button-carrinho" class="carrinho">
-                <img src="assents/carrinhobranco.png" alt="" width="35px">
-            </div>
+           <div id="carrinho-container">
+  <div id="button-carrinho" class="carrinho">
+    <img src="assents/carrinhobranco.png" alt="Carrinho" width="35px">
+  </div>
+  <div id="lista-carrinho"></div>
+</div>
         </div>
         </div>
          <input id="input-oculto" type="text" id="busca" placeholder=" O que você procura?">
@@ -44,50 +45,60 @@
             <button class="prev" onclick="mudarSlide(-1)">❮</button>
 
             <div class="slides" id="slides">
+                <div class="slide"><video autoplay muted loop playsinline>
+  <source src="./assents/HOME_P3_Main-KV_1440x640_pc_LTR.webm" type="video/webm">
+  Seu navegador não suporta vídeo.
+</video>
+</div>
                 <div class="slide"><img
-                        src="https://lojaibyte.vteximg.com.br/arquivos/ids/390658/categoria-NOTEBOOKS.png?v=637884993497800000"
-                        alt="Slide 1"></div>
-                <div class="slide"><img
-                        src="/assents/banner1.png"
+                        src="https://lojagoldentec.vteximg.com.br/arquivos/Banner-Monitor-Web-Ajustado.png?v=638797102909400000"
                         alt="Slide 2"></div>
                 <div class="slide"><img
-                        src="/assents/banner3.png"
+                        src="https://cms-assets.xboxservices.com/assets/5b/58/5b581732-2c41-406f-a709-970e048c8fad.jpg?n=Console-Hub_Page-Hero-1084_PYD-Assassins-Creed-Shadows_1920x720_01.jpg"
                         alt="Slide 3"></div>
+                        <div class="slide"><video autoplay muted loop playsinline>
+  <source src="./assents/xlarge.mp4">
+  Seu navegador não suporta vídeo.
+</video>
+</div>
             </div>
+            
 
             <button class="next" onclick="mudarSlide(1)">❯</button>
         </div>
     </main>
 
-    <div id="carrinho" style="display: none;">
-        <div class="carrinho-head">
-            <h1>Meu carrinho</h1>
-            <span class="close-btn" id="closeModal4">&times;</span>
-        </div>
-        <div class="conteudo">
-            <!--os produtos adicionados ao carrinho ficam aqui-->
-        </div>
-        <div class="bloco-info">
-            <div class="carrinho-subtotal">
-                <h1>Subtotal</h1>
-                <p>R$ 0,00</p>
-            </div>
-            <div class="carrinho-total">
-                <h1>Total</h1>
-                <p>R$ 0,00</p>
-            </div>
-            <div class="button-comprar">
-                <button class="comprar">Comprar</button>
-            </div>
-        </div>
-    </div>
+<div id="carrinho" style="display: none;">
+  <div class="carrinho-head">
+    <h1>Meu carrinho</h1>
+    <span class="close-btn" id="closeModal4">&times;</span>
+  </div>
+  <div class="conteudo">
 
+  </div>
+  <div class="bloco-info">
+    <div class="carrinho-subtotal">
+      <h1>Subtotal</h1>
+      <p>R$ 0,00</p>
+    </div>
+    <div class="carrinho-total">
+      <h1>Total</h1>
+      <p>R$ 0,00</p>
+    </div>
+    <div class="button-comprar">
+      <button class="comprar">Comprar</button>
+    </div>
+  </div>
+</div>
     <div class="mensagem" id="mensagem">
-        <p>Registrado com sucesso</p>
+        <div class="img-check">
+            <div class="check-dentro">
+                <img src="./assents/check.png" alt="" width="25px">
+            </div>
+        </div>
+         <p>Registrado com sucesso</p>
     </div>
-
     <section>
-
         <div id="blurOverlay" class="blur-overlay" style="display: none;">
             <div class="main">
                 <div id="loginForm" class="formu">
@@ -105,8 +116,6 @@
                         Não tem conta?<span id="sign-up-link"> Cadastre-se</span>
                     </p>
                 </div>
-
-
                 <div id="cadastroForm" class="formu" style="display:none;">
                     <span class="close-btn" id="closeModal2">&times;</span>
                     <p class="title">Cadastrar</p>
@@ -182,6 +191,10 @@
         </div>
     </section>
 
+
+    <script>src="js/config.js"</script>
+    <script type="module" src="js/filtro.js"></script>
+
     <footer class="footer">
   <div class="footer-container">
     
@@ -207,11 +220,11 @@
 </footer>
 
     <script src="js/filtro.js"></script>
+
     <script src="js/login.js"></script>
     <script src="js/cadastro.js"></script>
     <script src="js/alterar_senha.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/alterar_senha.js"></script>
     <script src="js/slider.js"></script>
     <script src="js/avaliacao.js"></script>
 

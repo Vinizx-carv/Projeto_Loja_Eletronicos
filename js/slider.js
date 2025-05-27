@@ -19,4 +19,4 @@
     // Autoplay a cada 3 segundos
     setInterval(() => {
       mudarSlide(1);
-    }, 3000);
+    }, 6000);

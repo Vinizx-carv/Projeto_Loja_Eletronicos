@@ -1,4 +1,6 @@
-const API_URL_PRO = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos';
+import { API_URL_PRO } from './config.js';
+
+console.log(API_URL_PRO); 
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get('id');
@@ -57,11 +59,14 @@ async function carregarProduto() {
         </div> 
         <div class="btn-add-comprar">  
           <button class="comprar">Comprar</button>
-          <button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
+<button onclick="adicionarAoCarrinho('${produto.id}')" class="add-carrinho">Adicionar ao carrinho</button>
           <p style="text-align: center; font-size: 1rem;">Vendido e entregue por <strong>Bytestore</strong></p>
         </div>
       </div>
     `;
+const botaoCarrinho = container.querySelector('.add-carrinho');
+botaoCarrinho.addEventListener('click', () => adicionarAoCarrinho(produto.id));
+    
 const especificacoes = [];
 
 if(produto.marca) especificacoes.push({ nome: 'Marca', valor: produto.marca });
@@ -156,7 +161,7 @@ desc.innerHTML = `
     });
 
 }
+
+
+
 carregarProduto();
-
-
-

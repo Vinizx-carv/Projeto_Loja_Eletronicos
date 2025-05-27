@@ -51,7 +51,9 @@ h1{
   height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease; 
+
   transform-origin: center center;
+
   cursor: zoom-in;
 }
 .imagem-principal img:hover {
@@ -79,7 +81,10 @@ h1{
 .imagens-dentro img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+
+    object-fit: contain;  
+
+
 }
 .produto-direita{
     display: flex;
@@ -124,25 +129,6 @@ h1{
     font-size: 1px;
 }
 
-.skeleton-produto .skeleton {
-  background: #af6d6d;
-  height: 20px;
-  margin: 10px 0;
-  border-radius: 4px;
-  animation: pulse 1.5s infinite;
-  display: flex;
-}
-
-.skeleton.image {
-  width: 70%;
-  height: 60vh;
-}
-
-.skeleton.text {
-  width: 80%;
-  height: 40px;
-}
-
 @keyframes pulse {
   0% { opacity: 1; }
   50% { opacity: 0.4; }
@@ -176,9 +162,7 @@ h1{
     font-size:1.1rem;
     width: 50%;
 }
-.especificacao:nth-child(odd) {
-  background-color: #ffffff;
-}
+
 
 .especificacao:nth-child(even) {
   background-color: #e0e0e0;
@@ -200,26 +184,18 @@ h1{
 @media screen and (max-width: 1080px) {
   #detalhe-produto {
   margin: 0px;
-
 }
 #informação{
-
   margin: 0px;
-
 }
 #descrição{
-
   margin: 0px;
-
 }
   .produto-container{
-
     flex-direction: column;
     align-items: center;
     width: 100%;
     gap: 30px;
-
-
 }
   .produto-esquerda{
     display: flex;

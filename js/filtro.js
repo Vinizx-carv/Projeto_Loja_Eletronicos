@@ -1,5 +1,6 @@
-// URL da API
-const API_URL_PRO = 'https://6816fbb426a599ae7c39065c.mockapi.io/v1/produtos';
+import { API_URL_PRO } from './config.js';
+
+
 
 // Elementos da DOM
 const precoRange = document.getElementById("preco");
@@ -107,75 +108,6 @@ document.getElementById("filtrar").addEventListener("click", () => {
   exibirProdutos(filtrados);
 });
 
-function adicionarAoCarrinho(id) {
-  const produto = produtosGlobal.find(p => p.id === id);
-  if (!produto) return;
 
-  const itemNoCarrinho = carrinho.find(p => p.id === id);
-
-  if (itemNoCarrinho) {
-    itemNoCarrinho.quantidade++;
-  } else {
-    carrinho.push({ ...produto, quantidade: 1 });
-  }
-
-  atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-  const carrinhoDiv = document.querySelector("#carrinho .conteudo");
-  carrinhoDiv.innerHTML = "";
-
-  let subtotal = 0;
-
-  carrinho.forEach(item => {
-    const preco = parseFloat(item.preco);
-    subtotal += preco * item.quantidade;
-
-    carrinhoDiv.innerHTML += `
-      <div class="item-carrinho" style="border-bottom: 1px solid #ccc; padding: 10px 0; ">
-        <img src="${item.imagemPrincipal}" alt="${item.nome}" style="width: 60px; height: 60px; object-fit: cover; object-fit: contain;">
-        <div class="detalhes-prod-carrinho">
-          <p><strong>${item.nome}</strong></p>
-          <p>Preço unitário: R$ ${preco.toFixed(2)}</p>
-          <p>Total: R$ ${(preco * item.quantidade).toFixed(2)}</p>
-          <div class="ajusta-quantidade"style="margin-top: 5px;">
-            <button onclick="diminuirQuantidade('${item.id}')"class="menos-e-mais">-</button>
-                      <p>${item.quantidade}</p>
-            <button onclick="aumentarQuantidade('${item.id}')" class="menos-e-mais">+</button>
-          </div>
-        </div>
-        <button onclick="removerItem('${item.id}')" class="remover"><img src="../assents/delete.png"  width="30px"; alt=""></button>
-      </div>
-    `;
-  });
-
-  document.querySelector(".carrinho-subtotal p").textContent = `R$ ${subtotal.toFixed(2)}`;
-  document.querySelector(".carrinho-total p").textContent = `R$ ${subtotal.toFixed(2)}`;
-}
-
-function aumentarQuantidade(id) {
-  const item = carrinho.find(p => p.id === id);
-  if (item) {
-    item.quantidade++;
-    atualizarCarrinho();
-  }
-}
-
-function diminuirQuantidade(id) {
-  const item = carrinho.find(p => p.id === id);
-  if (item) {
-    item.quantidade--;
-    if (item.quantidade <= 0) {
-      carrinho = carrinho.filter(p => p.id !== id);
-    }
-    atualizarCarrinho();
-  }
-}
-
-function removerItem(id) {
-  carrinho = carrinho.filter(p => p.id !== id);
-  atualizarCarrinho();
-}
 
 carregarProdutos();
